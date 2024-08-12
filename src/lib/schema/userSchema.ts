@@ -14,7 +14,7 @@ export const updateUserSchema = z.object({
   email: z.string().email().optional(),  
   age: z.number().int().positive().optional(),  
   isActive: z.boolean().optional(),  
-  createdAt: z.date().optional()  
+  createdAt: z.date().optional()
 });
 
 export const deleteUserSchema = z.object({
