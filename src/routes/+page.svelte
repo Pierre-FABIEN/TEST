@@ -6,7 +6,6 @@
 	import { superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
 
-	// Déstructuration de `data` depuis les propriétés
 	let { data } = $props();
 	
 	console.log(data);
@@ -18,7 +17,6 @@
 
 	const { enhance: deleteUserEnhance, message: deleteUserMessage } = deleteUserForm;
 	
-	// Vérifier si les dates sont valides avant de les formater
 	const formatDate = (dateString: string | Date) => {
 		const date = new Date(dateString);
 		return isNaN(date.getTime()) ? 'Invalid Date' : date.toLocaleDateString();
