@@ -1,7 +1,16 @@
 <script lang="ts">
 	import * as Table from '$lib/components/ui/table';
 
+	// Déstructuration de `data` depuis les propriétés
 	let { data } = $props();
+
+	console.log(data);
+	
+	// Vérifier si les dates sont valides avant de les formater
+	const formatDate = (dateString: string | Date) => {
+		const date = new Date(dateString);
+		return isNaN(date.getTime()) ? 'Invalid Date' : date.toLocaleDateString();
+	};
 </script>
 
 <div class="mx-auto mt-8 max-w-3xl px-4 sm:px-6 lg:px-8">
@@ -11,6 +20,10 @@
 				<Table.Row>
 					<Table.Head class="w-[100px]">ID</Table.Head>
 					<Table.Head>Name</Table.Head>
+					<Table.Head>Email</Table.Head>
+					<Table.Head>Age</Table.Head>
+					<Table.Head>Created At</Table.Head>
+					<Table.Head>Active</Table.Head>
 				</Table.Row>
 			</Table.Header>
 			<Table.Body>
@@ -18,6 +31,10 @@
 					<Table.Row>
 						<Table.Cell class="font-medium">{user.id}</Table.Cell>
 						<Table.Cell>{user.name}</Table.Cell>
+						<Table.Cell>{user.email}</Table.Cell>
+						<Table.Cell>{user.age}</Table.Cell>
+						<Table.Cell>{formatDate(user.createdAt)}</Table.Cell>
+						<Table.Cell>{user.isActive ? 'Yes' : 'No'}</Table.Cell>
 					</Table.Row>
 				{/each}
 			</Table.Body>
