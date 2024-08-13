@@ -44,6 +44,7 @@
 					<Table.Head>Name</Table.Head>
 					<Table.Head>Email</Table.Head>
 					<Table.Head>Age</Table.Head>
+					<Table.Head>From</Table.Head>
 					<Table.Head>Created At</Table.Head>
 					<Table.Head>Active</Table.Head>
 				</Table.Row>
@@ -54,6 +55,11 @@
 						<Table.Cell>{user.name}</Table.Cell>
 						<Table.Cell>{user.email}</Table.Cell>
 						<Table.Cell>{user.age}</Table.Cell>
+						<Table.Cell>
+							{#if user.location}
+								{user.location.city}
+							{/if}
+						</Table.Cell>
 						<Table.Cell>{formatDate(user.createdAt)}</Table.Cell>
 						<Table.Cell>{user.isActive ? 'Yes' : 'No'}</Table.Cell>
 						<Table.Cell>

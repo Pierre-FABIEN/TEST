@@ -7,7 +7,7 @@
 	import { superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
 
-	let { data } = $props();
+	let { data } = $props()
 
 	console.log(data);
 	
@@ -42,6 +42,7 @@
 					<Table.Head>State</Table.Head>
 					<Table.Head>ZIP</Table.Head>
 					<Table.Head>Country</Table.Head>
+					<Table.Head>User</Table.Head>
 				</Table.Row>
 			</Table.Header>
 			<Table.Body>
@@ -52,6 +53,7 @@
 						<Table.Cell>{location.state}</Table.Cell>
 						<Table.Cell>{location.zip}</Table.Cell>
 						<Table.Cell>{location.country}</Table.Cell>
+						<Table.Cell>{location.user[0].name}</Table.Cell>
 						<Table.Cell>
 							<form method="POST" action="?/delete" use:deleteLocationEnhance>
 								<input type="hidden" name="id" value={location.id} />

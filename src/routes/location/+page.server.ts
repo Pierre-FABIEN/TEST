@@ -4,7 +4,11 @@ import { deleteLocationSchema } from '$lib/schema/locationSchema';
 import { zod } from 'sveltekit-superforms/adapters';
 
 export const load = async () => {
-	const locations = await prisma.location.findMany();
+	const locations = await prisma.location.findMany({
+		include: {
+		  user: true,
+		},
+	  });
 
 	const deleteLocation = await superValidate(zod(deleteLocationSchema));
 

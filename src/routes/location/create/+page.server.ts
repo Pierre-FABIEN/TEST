@@ -37,7 +37,7 @@ export const actions = {
           state: form.data.state,
           zip: form.data.zip,
           country: form.data.country,
-          users: {
+          user: {
             connect: { id: form.data.userId }
           }
         }

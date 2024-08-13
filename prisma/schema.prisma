@@ -25,6 +25,6 @@ model Location {
   state     String
   zip       String
   country   String
-  users     User[]
+  user     User[]
 }
 
