@@ -76,8 +76,8 @@
       </Form.Field>
     </div>
 
-    <input hidden name="id" bind:value={data.updateUser.data.id} />
-    <input hidden name="createdAt" bind:value={data.updateUser.data.createdAt} />
+    <input hidden name="id" value={data.updateUser.data.id} />
+    <input hidden name="createdAt" value={data.updateUser.data.createdAt} />
     <input hidden name="isActive" value={$updateUserData.isActive} />
 
     <div class="mt-6">
