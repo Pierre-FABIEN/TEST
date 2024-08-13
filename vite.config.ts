@@ -5,5 +5,8 @@ export default defineConfig({
 	plugins: [sveltekit()],
 	test: {
 		include: ['src/**/*.{test,spec}.{js,ts}']
-	}
+	},
+	resolve: {
+		extensions: ['.js', '.ts', '.svelte']  // Assurez-vous que .svelte est bien inclus ici
+	  }
 });

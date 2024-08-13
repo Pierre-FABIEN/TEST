@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Button from '$lib/components/ui/button/button.svelte';
 	import * as Table from '$lib/components/ui/table';
+	import { toast } from "svelte-sonner";
 
 	import { deleteUserSchema } from '$lib/schema/userSchema.js';
 	import { superForm } from 'sveltekit-superforms';
@@ -21,6 +22,12 @@
 		const date = new Date(dateString);
 		return isNaN(date.getTime()) ? 'Invalid Date' : date.toLocaleDateString();
 	};
+
+	$effect(() => {
+		if ($deleteUserMessage === 'User deleted successfully') {
+			toast.success($deleteUserMessage);
+		}
+	})
 </script>
 
 <div class="mx-auto mt-8 max-w-5xl px-4 sm:px-6 lg:px-8">

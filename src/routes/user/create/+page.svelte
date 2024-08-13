@@ -7,6 +7,8 @@
     import { superForm } from 'sveltekit-superforms';
     import { zodClient } from 'sveltekit-superforms/adapters';
     import { createUserSchema } from '$lib/schema/userSchema';
+	import { toast } from 'svelte-sonner';
+	import { goto } from '$app/navigation';
 
   
     let { data } = $props();
@@ -23,12 +25,14 @@
 		form: createUserData,
 		enhance: createUserEnhance,
 		message: createUserMessage,
-		validate: createUserValidate
 	} = createUserForm;
 
-  $effect(() => {
-    console.log($createUserMessage, 'createUserMessage');
-  })
+	$effect(() => {
+		if ($createUserMessage === 'User created successfully') {
+			toast.success($createUserMessage);
+      setTimeout(() => goto('/user'), 0);
+		}
+	})
   
   </script>
   

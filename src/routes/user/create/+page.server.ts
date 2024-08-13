@@ -1,5 +1,5 @@
-import { fail, redirect } from '@sveltejs/kit';
-import { superValidate } from 'sveltekit-superforms';
+import { fail } from '@sveltejs/kit';
+import { message, superValidate } from 'sveltekit-superforms';
 import { createUserSchema } from '$lib/schema/userSchema';
 import { prisma } from '$lib/server';
 import { zod } from 'sveltekit-superforms/adapters';
@@ -26,7 +26,6 @@ export const actions = {
     }
 
     try {
-      // Crée un nouvel utilisateur dans la base de données
       await prisma.user.create({
         data: {
           name: form.data.name,
@@ -37,9 +36,8 @@ export const actions = {
         }
       });
 
-      // Redirige vers une autre page après la création
-      throw redirect(303, '/user/success'); // Page de succès ou liste des utilisateurs
 
+      return message(form, 'User created successfully');
     } catch (error) {
       console.error('Error creating user:', error);
       return fail(500, {
