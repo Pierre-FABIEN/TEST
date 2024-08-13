@@ -11,6 +11,9 @@
 
   let { data } = $props();
 
+  console.log(data);
+  
+
   const createLocationForm = superForm(data.form, {
     validators: zodClient(createLocationSchema),
     id: 'createLocationForm'
@@ -103,15 +106,18 @@
             <Popover.Content>
               <div class="flex flex-col space-y-2">
                 {#each data.users as user}
-                  <button 
-                    class="text-left hover:bg-gray-100 p-2 rounded"
-                    on:click={() => selectUser(user)}
-                  >
-                    {user.name}
-                  </button>
+                  {#if user.locationId === null}
+                    <button 
+                      class="text-left hover:bg-gray-100 p-2 rounded"
+                      on:click={() => selectUser(user)}
+                    >
+                      {user.name}
+                    </button>
+                  {/if}
                 {/each}
               </div>
             </Popover.Content>
+            
           </Popover.Root>
         </Form.Control>
         <Form.FieldErrors />
