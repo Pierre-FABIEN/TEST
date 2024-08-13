@@ -11,10 +11,6 @@
 
   let { data } = $props();
 
-  console.log(data);
-  
-
-  // Initialisation du formulaire avec les données existantes de l'utilisateur
   const updateUserForm = superForm(data.updateUser, {
     validators: zodClient(updateUserSchema),
     id: 'updateUserForm'

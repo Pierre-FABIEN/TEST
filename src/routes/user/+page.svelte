@@ -8,8 +8,6 @@
 	import { zodClient } from 'sveltekit-superforms/adapters';
 
 	let { data } = $props();
-	
-	console.log(data);
 
 	const deleteUserForm = superForm(data.deleteUser, {
 		validators: zodClient(deleteUserSchema),

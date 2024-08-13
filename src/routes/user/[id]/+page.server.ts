@@ -5,7 +5,6 @@ import { prisma } from '$lib/server';
 import { zod } from 'sveltekit-superforms/adapters';
 
 export const load = async ({ params }) => {
-  // Charger l'utilisateur par ID
   const user = await prisma.user.findUnique({
     where: { id: params.id }
   });
@@ -14,7 +13,6 @@ export const load = async ({ params }) => {
     throw redirect(302, '/user/not-found');
   }
 
-  // Pré-remplir le formulaire avec les données de l'utilisateur existant
   const updateUser = await superValidate(user, zod(updateUserSchema));
 
   return { updateUser };
@@ -23,11 +21,8 @@ export const load = async ({ params }) => {
 export const actions = {
   update: async ({ request }) => {
     const formData = await request.formData();
-    console.log(formData, 'formData');
-    
-    // Valide les données du formulaire
+
     const form = await superValidate(formData, zod(updateUserSchema));
-    console.log(form, 'form');
 
     if (!form.valid) {
       return fail(400, {
@@ -37,7 +32,6 @@ export const actions = {
     }
 
     try {
-      // Mettre à jour l'utilisateur dans la base de données
       await prisma.user.update({
         where: { id: form.data.id },
         data: {
