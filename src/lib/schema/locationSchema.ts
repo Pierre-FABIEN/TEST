@@ -1,12 +1,12 @@
 import { z } from 'zod';
 
-// Create Location Schema
 export const createLocationSchema = z.object({
   street: z.string().min(1, "Street is required"),
   city: z.string().min(1, "City is required"),
   state: z.string().min(1, "State is required"),
   zip: z.string().min(1, "ZIP code is required"),
   country: z.string().min(1, "Country is required"),
+  userId: z.string().min(1, "User is required"),  // Ajout du champ userId
 });
 
 // Update Location Schema

@@ -8,14 +8,14 @@ generator client {
 }
 
 model User {
-  id          String   @id @map("_id") @default(auto()) @db.ObjectId
+  id          String    @id @map("_id") @default(auto()) @db.ObjectId
   name        String
-  email       String   @unique
+  email       String    @unique
   age         Int      
-  createdAt   DateTime @default(now())
-  isActive    Boolean  @default(true)
+  createdAt   DateTime  @default(now())
+  isActive    Boolean   @default(true)
+  locationId  String?   @db.ObjectId
   location    Location? @relation(fields: [locationId], references: [id])
-  locationId  String?   @db.ObjectId  // Rendre ce champ nullable
 }
 
 model Location {
@@ -27,3 +27,4 @@ model Location {
   country   String
   users     User[]
 }
+
