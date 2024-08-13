@@ -38,7 +38,6 @@
 		<Table.Root>
 			<Table.Header>
 				<Table.Row>
-					<Table.Head class="w-[100px]">ID</Table.Head>
 					<Table.Head>Name</Table.Head>
 					<Table.Head>Email</Table.Head>
 					<Table.Head>Age</Table.Head>
@@ -49,7 +48,6 @@
 			<Table.Body>
 				{#each data.users as user (user.id)}
 					<Table.Row>
-						<Table.Cell class="font-medium">{user.id}</Table.Cell>
 						<Table.Cell>{user.name}</Table.Cell>
 						<Table.Cell>{user.email}</Table.Cell>
 						<Table.Cell>{user.age}</Table.Cell>

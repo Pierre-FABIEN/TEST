@@ -23,16 +23,22 @@
 	<nav class="flex items-center border rounded space-x-4 lg:space-x-6 rcb w-[500px] p-3">
 		<a
 			href="/"
-			class={`text-sm font-medium ${$page.url.pathname === '/dashboard' ? 'text-primary' : 'text-muted-foreground'} transition-colors hover:text-primary`}
+			class={`text-sm font-medium ${$page.url.pathname === '/' ? 'text-primary' : 'text-muted-foreground'} transition-colors hover:text-primary`}
 		>
 			Accueil
 		</a>
 		<a
 			href="/user"
-			class={`text-sm font-medium ${$page.url.pathname === '/dashboard/users' ? 'text-primary' : 'text-muted-foreground'} transition-colors hover:text-primary`}
+			class={`text-sm font-medium ${$page.url.pathname === '/user' ? 'text-primary' : 'text-muted-foreground'} transition-colors hover:text-primary`}
 		>
 			Utilisateurs
 		</a>
+		<a
+		href="/location"
+		class={`text-sm font-medium ${$page.url.pathname === '/location' ? 'text-primary' : 'text-muted-foreground'} transition-colors hover:text-primary`}
+	>
+		Location
+	</a>
 	</nav>
 </div>
 
