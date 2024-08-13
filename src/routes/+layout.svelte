@@ -6,9 +6,18 @@
 	import { Toaster } from "$lib/components/ui/sonner";
 
 	let { children } = $props();
+
+	let isClient = false;
+
+	$effect(() => {
+		isClient = true;
+	});
+
 </script>
 
-<ModeWatcher />
+{#if isClient}
+  <ModeWatcher />
+{/if}
 
 <div class="flex justify-center mt-5">
 	<nav class="flex items-center border rounded space-x-4 lg:space-x-6 rcb w-[500px] p-3">
@@ -32,4 +41,3 @@
 </main>
 
 <Toaster />
-
