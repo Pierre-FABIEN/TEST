@@ -7,7 +7,7 @@
 
 	let { children } = $props();
 
-	let isClient = false;
+	let isClient = $state(false);
 
 	$effect(() => {
 		isClient = true;

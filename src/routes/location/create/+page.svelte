@@ -106,14 +106,12 @@
             <Popover.Content>
               <div class="flex flex-col space-y-2">
                 {#each data.users as user}
-                  {#if user.locationId === null}
                     <button 
                       class="text-left hover:bg-gray-100 p-2 rounded"
-                      on:click={() => selectUser(user)}
+                      onclick={() => selectUser(user)}
                     >
                       {user.name}
                     </button>
-                  {/if}
                 {/each}
               </div>
             </Popover.Content>

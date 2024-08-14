@@ -8,14 +8,13 @@ generator client {
 }
 
 model User {
-  id          String    @id @map("_id") @default(auto()) @db.ObjectId
+  id          String      @id @map("_id") @default(auto()) @db.ObjectId
   name        String
-  email       String    @unique
+  email       String      @unique
   age         Int      
-  createdAt   DateTime  @default(now())
-  isActive    Boolean   @default(true)
-  locationId  String?   @db.ObjectId
-  location    Location? @relation(fields: [locationId], references: [id])
+  createdAt   DateTime    @default(now())
+  isActive    Boolean     @default(true)
+  locations   Location[]  @relation("UserLocations")
 }
 
 model Location {
@@ -25,6 +24,6 @@ model Location {
   state     String
   zip       String
   country   String
-  user     User[]
+  userId    String   @db.ObjectId
+  user      User     @relation("UserLocations", fields: [userId], references: [id], onDelete: Cascade)
 }
-

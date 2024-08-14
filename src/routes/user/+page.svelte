@@ -56,9 +56,9 @@
 						<Table.Cell>{user.email}</Table.Cell>
 						<Table.Cell>{user.age}</Table.Cell>
 						<Table.Cell>
-							{#if user.location}
-								{user.location.city}
-							{/if}
+							{#each user.locations as location}
+								{location.city}, 
+							{/each}
 						</Table.Cell>
 						<Table.Cell>{formatDate(user.createdAt)}</Table.Cell>
 						<Table.Cell>{user.isActive ? 'Yes' : 'No'}</Table.Cell>
