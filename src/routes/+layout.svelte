@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { ModeWatcher } from 'mode-watcher';
-	import '../app.css';
 	import { Toaster } from '$lib/components/ui/sonner';
 	import { Progress } from "$lib/components/ui/progress/index.js";
+	import '../app.css';
 
 	let { children } = $props();
 	let isClient = $state(false);

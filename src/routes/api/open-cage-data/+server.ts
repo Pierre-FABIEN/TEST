@@ -1,4 +1,3 @@
-// C:\Web\SILVER-SMOK-TEST\src\routes\api\open-cage-data\+server.ts
 import type { RequestHandler } from './$types';
 import { json } from '@sveltejs/kit';
 import { SECRET_OPENCAGEDATA_KEY } from '$env/static/private';
@@ -9,8 +8,9 @@ export const GET: RequestHandler = async ({ url }) => {
 		return json({ error: 'Query parameter is missing' }, { status: 400 });
 	}
 
+	// Ajout du paramètre 'countrycode=fr' pour limiter la recherche à la France
 	const response = await fetch(
-		`https://api.opencagedata.com/geocode/v1/json?q=${query}&key=${SECRET_OPENCAGEDATA_KEY}`
+		`https://api.opencagedata.com/geocode/v1/json?q=${query}&key=${SECRET_OPENCAGEDATA_KEY}&countrycode=fr`
 	);
 	const data = await response.json();
 
