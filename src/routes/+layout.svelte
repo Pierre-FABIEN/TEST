@@ -3,7 +3,7 @@
 	import { ModeWatcher } from 'mode-watcher';
 	import '../app.css';
 
-	import { Toaster } from "$lib/components/ui/sonner";
+	import { Toaster } from '$lib/components/ui/sonner';
 
 	let { children } = $props();
 
@@ -12,11 +12,10 @@
 	$effect(() => {
 		isClient = true;
 	});
-
 </script>
 
 {#if isClient}
-  <ModeWatcher />
+	<ModeWatcher />
 {/if}
 
 <div class="flex justify-center mt-5">
@@ -34,11 +33,11 @@
 			Utilisateurs
 		</a>
 		<a
-		href="/location"
-		class={`text-sm font-medium ${$page.url.pathname === '/location' ? 'text-primary' : 'text-muted-foreground'} transition-colors hover:text-primary`}
-	>
-		Location
-	</a>
+			href="/location"
+			class={`text-sm font-medium ${$page.url.pathname === '/location' ? 'text-primary' : 'text-muted-foreground'} transition-colors hover:text-primary`}
+		>
+			Location
+		</a>
 	</nav>
 </div>
 

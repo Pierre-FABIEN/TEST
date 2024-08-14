@@ -5,45 +5,42 @@ import { prisma } from '$lib/server';
 import { zod } from 'sveltekit-superforms/adapters';
 
 export const load = async () => {
-  // Initialise le formulaire de création d'utilisateur
-  const form = await superValidate(zod(createUserSchema));
+	const form = await superValidate(zod(createUserSchema));
 
-  return { form };
+	return { form };
 };
 
 export const actions = {
-  create: async ({ request }) => {
-    const formData = await request.formData();
+	create: async ({ request }) => {
+		const formData = await request.formData();
 
-    // Valide les données du formulaire
-    const form = await superValidate(formData, zod(createUserSchema));
+		const form = await superValidate(formData, zod(createUserSchema));
 
-    if (!form.valid) {
-      return fail(400, {
-        form,
-        error: 'Invalid data'
-      });
-    }
+		if (!form.valid) {
+			return fail(400, {
+				form,
+				error: 'Invalid data'
+			});
+		}
 
-    try {
-      await prisma.user.create({
-        data: {
-          name: form.data.name,
-          email: form.data.email,
-          age: form.data.age,
-          isActive: form.data.isActive,
-          createdAt: form.data.createdAt,
-        }
-      });
+		try {
+			await prisma.user.create({
+				data: {
+					name: form.data.name,
+					email: form.data.email,
+					age: form.data.age,
+					isActive: form.data.isActive,
+					createdAt: form.data.createdAt
+				}
+			});
 
-
-      return message(form, 'User created successfully');
-    } catch (error) {
-      console.error('Error creating user:', error);
-      return fail(500, {
-        error: 'Failed to create user',
-        form
-      });
-    }
-  }
+			return message(form, 'User created successfully');
+		} catch (error) {
+			console.error('Error creating user:', error);
+			return fail(500, {
+				error: 'Failed to create user',
+				form
+			});
+		}
+	}
 };

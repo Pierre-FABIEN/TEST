@@ -1,4 +1,3 @@
-
 # **Silver-Smok-Test**
 
 ![Project Badge](https://img.shields.io/badge/version-0.0.1-blue) ![License](https://img.shields.io/badge/license-MIT-green) ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)
@@ -42,7 +41,6 @@
 ### 🔧 **Linting & Formatage**
 
 - **[ESLint](https://eslint.org/)** : Un outil d'analyse statique qui identifie et corrige les problèmes dans le code JavaScript et TypeScript.
-  
 - **[Prettier](https://prettier.io/)** : Un formateur de code qui garantit un style de code cohérent et propre à travers l'ensemble du projet.
 
 ## **Scripts**
@@ -65,4 +63,3 @@ Pour installer les dépendances et lancer l'application en mode développement :
 npm install
 npm run dev
 ```
-

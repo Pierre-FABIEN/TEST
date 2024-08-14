@@ -6,15 +6,15 @@ import { zod } from 'sveltekit-superforms/adapters';
 export const load = async () => {
 	const locations = await prisma.location.findMany({
 		include: {
-		  user: true,
-		},
-	  });
+			user: true
+		}
+	});
 
 	const deleteLocation = await superValidate(zod(deleteLocationSchema));
 
-	return { 
+	return {
 		locations,
-		deleteLocation 
+		deleteLocation
 	};
 };
 
@@ -31,7 +31,7 @@ export const actions = {
 			});
 		}
 
-		try {		
+		try {
 			await prisma.location.delete({
 				where: { id: form.data.id }
 			});
@@ -41,5 +41,5 @@ export const actions = {
 			console.error('Error deleting location:', error);
 			return fail(500, { error: 'Failed to delete location', form });
 		}
-	},
+	}
 };

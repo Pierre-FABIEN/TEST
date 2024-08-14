@@ -5,53 +5,72 @@ import { prisma } from '$lib/server';
 import { zod } from 'sveltekit-superforms/adapters';
 
 export const load = async ({ params }) => {
-  const location = await prisma.location.findUnique({
-    where: { id: params.id }
-  });
+	const location = await prisma.location.findUnique({
+		where: { id: params.id }
+	});
 
-  if (!location) {
-    throw redirect(302, '/location/not-found');
-  }
+	const users = await prisma.user.findMany();
 
-  const updateLocation = await superValidate(location, zod(updateLocationSchema));
+	if (!location) {
+		throw redirect(302, '/location/not-found');
+	}
 
-  return { updateLocation };
+	const updateLocation = await superValidate(location, zod(updateLocationSchema));
+
+	return {
+		location,
+		users,
+		updateLocation
+	};
 };
 
 export const actions = {
-    update: async ({ request }) => {
-      const formData = await request.formData();
-  
-      const form = await superValidate(formData, zod(updateLocationSchema));
-  
-      if (!form.valid) {
-        return fail(400, {
-          form,
-          error: 'Invalid data'
-        });
-      }
-  
-      try {
-        await prisma.location.update({
-          where: { id: form.data.id },
-          data: {
-            street: form.data.street,
-            city: form.data.city,
-            state: form.data.state,
-            zip: form.data.zip,
-            country: form.data.country,
-            userId: form.data.userId,
-          }
-        });
-  
-        return message(form, 'Location updated successfully');
-      } catch (error) {
-        console.error('Error updating location:', error);
-        return fail(500, {
-          error: 'Failed to update location',
-          form
-        });
-      }
-    }
-  };
-  
+	update: async ({ request }) => {
+		const formData = await request.formData();
+
+		console.log(formData, 'form data');
+
+		// Récupérer et valider les données du formulaire
+		const form = await superValidate(formData, zod(updateLocationSchema));
+
+		if (!form.valid) {
+			return fail(400, {
+				form,
+				error: 'Invalid data'
+			});
+		}
+
+		// Vérifier si l'ID est présent
+		const locationId = form.data.id;
+
+		if (!locationId) {
+			return fail(400, {
+				form,
+				error: 'Location ID is required'
+			});
+		}
+
+		try {
+			// Mise à jour de la localisation dans la base de données
+			await prisma.location.update({
+				where: { id: locationId },
+				data: {
+					street: form.data.street,
+					city: form.data.city,
+					state: form.data.state,
+					zip: form.data.zip,
+					country: form.data.country,
+					userId: form.data.userId
+				}
+			});
+
+			return message(form, 'Location updated successfully');
+		} catch (error) {
+			console.error('Error updating location:', error);
+			return fail(500, {
+				error: 'Failed to update location',
+				form
+			});
+		}
+	}
+};
