@@ -1,27 +1,26 @@
 import { z } from 'zod';
 
-// Create User Schema
-export const createUserSchema = z.object({
+// Common fields schema
+const userFieldsSchema = {
 	name: z.string().min(1, 'Name is required'),
 	email: z.string().email('Invalid email address'),
-	age: z.number().int().positive(),
+	age: z.number().int().positive('Age must be a positive integer'),
 	isActive: z.boolean().default(true),
 	createdAt: z.date().default(new Date())
-});
+};
+
+// Create User Schema
+export const createUserSchema = z.object(userFieldsSchema);
 
 // Update User Schema
 export const updateUserSchema = z.object({
 	id: z.string().min(1).optional(),
-	name: z.string().min(1).optional(),
-	email: z.string().email().optional(),
-	age: z.number().int().positive().optional(),
-	isActive: z.boolean().optional(),
-	createdAt: z.date().optional()
+	...z.object(userFieldsSchema).partial().shape
 });
 
 // Delete User Schema
 export const deleteUserSchema = z.object({
-	id: z.string().min(1).optional()
+	id: z.string().min(1, 'ID is required').optional()
 });
 
 export type CreateUserInput = z.infer<typeof createUserSchema>;
