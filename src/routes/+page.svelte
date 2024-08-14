@@ -109,7 +109,17 @@
 				> : Un framework CSS utilitaire qui permet de construire des interfaces utilisateur rapidement
 				avec une grande flexibilité dans le style.
 			</li>
+			<li class="text-lg">
+				<a
+					href="https://shadcn.dev/"
+					class="text-blue-600 hover:underline"
+					target="_blank"
+					rel="noopener noreferrer">Shadcn UI</a
+				> : Une collection de composants préconçus construits avec Tailwind CSS et Radix, qui permet de
+				rapidement intégrer des composants accessibles et stylisés dans vos projets.
+			</li>
 		</ul>
+		
 
 		<h3 class="text-xl font-medium mt-4 mb-2">💻 Langage & Typage</h3>
 		<ul class="list-none space-y-2">

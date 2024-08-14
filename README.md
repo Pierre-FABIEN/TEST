@@ -33,6 +33,8 @@
 ### 🎨 **Styling**
 
 - **[Tailwind CSS](https://tailwindcss.com/)** : Un framework CSS utilitaire qui permet de construire des interfaces utilisateur rapidement avec une grande flexibilité dans le style.
+- **[Shadcn UI](https://shadcn.dev/)** : Une collection de composants UI préconçus et stylisés avec Tailwind CSS et Radix, offrant des solutions prêtes à l'emploi pour des interfaces utilisateur accessibles et élégantes.
+
 
 ### 💻 **Langage & Typage**
 
