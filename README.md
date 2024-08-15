@@ -35,7 +35,6 @@
 - **[Tailwind CSS](https://tailwindcss.com/)** : Un framework CSS utilitaire qui permet de construire des interfaces utilisateur rapidement avec une grande flexibilité dans le style.
 - **[Shadcn UI](https://shadcn.dev/)** : Une collection de composants UI préconçus et stylisés avec Tailwind CSS et Radix, offrant des solutions prêtes à l'emploi pour des interfaces utilisateur accessibles et élégantes.
 
-
 ### 💻 **Langage & Typage**
 
 - **[TypeScript](https://www.typescriptlang.org/)** : Un sur-ensemble de JavaScript qui ajoute le typage statique, améliorant la qualité et la maintenabilité du code.
@@ -66,9 +65,8 @@ npm install
 npm run dev
 ```
 
-
-A faire: 
+A faire:
 -Trouver le moyen de mettre en place des stats
 -Réaliser des stocks en fonctions de l'adresse
 -Partager le fait qu'il y ai une faiblesse sur la conception ULM
--Partager les motivations et l'envie d'évoluer avec sveltekit. 
+-Partager les motivations et l'envie d'évoluer avec sveltekit.

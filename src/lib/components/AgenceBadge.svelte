@@ -1,9 +1,12 @@
 <script lang="ts">
-	import * as HoverCard from "$lib/components/ui/hover-card";
-	import { Badge } from "$lib/components/ui/badge/index.js";
+	import * as HoverCard from '$lib/components/ui/hover-card';
+	import { Badge } from '$lib/components/ui/badge/index.js';
 
-    let { agence }: { agence: { street: string, city: string, state: string, zip: string, country: string } } = $props();
-    
+	let {
+		agence
+	}: { agence: { street: string; city: string; state: string; zip: string; country: string } } =
+		$props();
+
 	const getZipPrefix = (zip: string) => zip.slice(0, 2);
 </script>
 

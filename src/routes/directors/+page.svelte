@@ -11,7 +11,6 @@
 	let { data } = $props();
 
 	console.log(data);
-	
 
 	const deleteDirectorForm = superForm(data.deleteDirector, {
 		validators: zodClient(deleteDirectorSchema),
@@ -66,7 +65,7 @@
 						<Table.Cell>{directors.age}</Table.Cell>
 						<Table.Cell>
 							{#each directors.agencies as agence}
-							<AgenceBadge agence={agence} />
+								<AgenceBadge {agence} />
 							{/each}
 						</Table.Cell>
 						<Table.Cell>{formatDate(directors.createdAt)}</Table.Cell>

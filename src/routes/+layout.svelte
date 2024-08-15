@@ -49,7 +49,14 @@
 				href="/agencies"
 				class={`text-sm font-medium ${$page.url.pathname === '/agencies' ? 'text-primary' : 'text-muted-foreground'} transition-colors hover:text-primary`}
 			>
-				Agencies			</a>
+				Agencies
+			</a>
+			<a
+				href="/products"
+				class={`text-sm font-medium ${$page.url.pathname === '/products' ? 'text-primary' : 'text-muted-foreground'} transition-colors hover:text-primary`}
+			>
+				Products
+			</a>
 		</nav>
 	</div>
 
