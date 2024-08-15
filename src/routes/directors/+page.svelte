@@ -19,11 +19,6 @@
 
 	const { enhance: deleteDirectorEnhance, message: deleteDirectorMessage } = deleteDirectorForm;
 
-	const formatDate = (dateString: string | Date) => {
-		const date = new Date(dateString);
-		return isNaN(date.getTime()) ? 'Invalid Date' : date.toLocaleDateString();
-	};
-
 	$effect(() => {
 		if ($deleteDirectorMessage === 'Director deleted successfully') {
 			toast.success($deleteDirectorMessage);
@@ -53,7 +48,6 @@
 					<Table.Head>Email</Table.Head>
 					<Table.Head>Age</Table.Head>
 					<Table.Head>From</Table.Head>
-					<Table.Head>Created At</Table.Head>
 					<Table.Head>Active</Table.Head>
 				</Table.Row>
 			</Table.Header>
@@ -68,10 +62,9 @@
 								<AgenceBadge {agence} />
 							{/each}
 						</Table.Cell>
-						<Table.Cell>{formatDate(directors.createdAt)}</Table.Cell>
 						<Table.Cell>{directors.isActive ? 'Yes' : 'No'}</Table.Cell>
 						<Table.Cell>
-							<div class="flex">
+							<div class="flex justify-end">
 								<div class="m-2">
 									<form method="POST" action="?/delete" use:deleteDirectorEnhance>
 										<input type="hidden" name="id" value={directors.id} />

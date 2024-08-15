@@ -1,59 +1,54 @@
 <script lang="ts">
-  import { onDestroy } from 'svelte';
-
   let chartElement: HTMLElement;
   let chart: any;
 
-  // Données passées en props
   let { data } = $props();
 
-  $effect(async () => {
+  $effect(() => {
     if (typeof window !== 'undefined') {
-      // Importation dynamique d'ApexCharts côté client uniquement
-      const ApexCharts = (await import('apexcharts')).default;
+      (async () => {
+        const ApexCharts = (await import('apexcharts')).default;
 
-      const stockData = data.stockData.map(item => {
-        const totalStock = isNaN(item.totalStock) ? 0 : item.totalStock;
-        console.log(`Agence: ${item.agence}, TotalStock: ${totalStock}`);
-        return {
-          agence: item.agence,
-          totalStock,
-        };
-      });
+        const stockData = data.stockData.map(item => {
+          const totalStock = isNaN(item.totalStock) ? 0 : item.totalStock;
+          return {
+            agence: item.agence,
+            totalStock,
+          };
+        });
 
-      console.log('Stock Data:', stockData);
-
-      const options = {
-        chart: {
-          type: 'bar',
-        },
-        series: [
-          {
-            name: 'Products',
-            data: stockData.map(item => item.totalStock),
+        const options = {
+          chart: {
+            type: 'radar',
+            height: '100%', // Assurez-vous que le graphique prend 100% de la hauteur du conteneur
           },
-        ],
-        xaxis: {
-          categories: stockData.map(item => item.agence),
-        },
-        title: {
-          text: 'Total Stock by Agency',
-          align: 'center',
-        },
-      };
+          series: [
+            {
+              name: 'Products',
+              data: stockData.map(item => item.totalStock),
+            },
+          ],
+          xaxis: {
+            categories: stockData.map(item => item.agence),
+          },
+          title: {
+            text: 'Total Stock by Agency',
+            align: 'center',
+          },
+        };
 
-      chart = new ApexCharts(chartElement, options);
-      chart.render();
+        chart = new ApexCharts(chartElement, options);
+        chart.render();
+      })();
     }
-  });
 
-  onDestroy(() => {
-    // Nettoyage lors de la destruction du composant
-    if (chart) {
-      chart.destroy();
-      chart = undefined;  // Annuler la référence pour éviter les erreurs post-destruction
-    }
+    return () => {
+      if (chart) {
+        chart.destroy();
+        chart = undefined;
+      }
+    };
   });
 </script>
 
-<div bind:this={chartElement}></div>
+<div bind:this={chartElement} class="chartcss text-black h-[80vh] w-[100%]"></div>

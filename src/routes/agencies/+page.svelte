@@ -6,6 +6,7 @@
 	import { deleteAgenceSchema } from '$lib/schema/agenciesSchema.js';
 	import { superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
+	import DirectorBadge from '$lib/components/DirectorBadge.svelte';
 
 	let { data } = $props();
 
@@ -57,9 +58,11 @@
 						<Table.Cell>{agence.state}</Table.Cell>
 						<Table.Cell>{agence.zip}</Table.Cell>
 						<Table.Cell>{agence.country}</Table.Cell>
-						<Table.Cell>{agence.director ? agence.director.name : 'No Director'}</Table.Cell>
 						<Table.Cell>
-							<div class="flex">
+							<DirectorBadge director={agence.director} />
+						</Table.Cell>
+						<Table.Cell>
+							<div class="flex justify-end">
 								<div class="m-2">
 									<form method="POST" action="?/delete" use:deleteAgenceEnhance>
 										<input type="hidden" name="id" value={agence.id} />

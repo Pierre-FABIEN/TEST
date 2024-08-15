@@ -7,6 +7,7 @@
 	import { superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
 	import AgenceBadge from '$lib/components/AgenceBadge.svelte';
+	import DirectorBadge from '$lib/components/DirectorBadge.svelte';
 
 	let { data } = $props();
 
@@ -18,11 +19,6 @@
 	});
 
 	const { enhance: deleteProductEnhance, message: deleteProductMessage } = deleteProductForm;
-
-	const formatDate = (dateString: string | Date) => {
-		const date = new Date(dateString);
-		return isNaN(date.getTime()) ? 'Invalid Date' : date.toLocaleDateString();
-	};
 
 	$effect(() => {
 		if ($deleteProductMessage === 'Product deleted successfully') {
@@ -52,8 +48,7 @@
 					<Table.Head>Stock</Table.Head>
 					<Table.Head>Price</Table.Head>
 					<Table.Head>Agence</Table.Head>
-					<Table.Head>Director</Table.Head> <!-- Nouvelle colonne pour le Directeur -->
-					<Table.Head>Created At</Table.Head>
+					<Table.Head>Director</Table.Head>
 				</Table.Row>
 			</Table.Header>
 			<Table.Body>
@@ -65,10 +60,11 @@
 						<Table.Cell>
 							<AgenceBadge agence={product.agence} />
 						</Table.Cell>
-						<Table.Cell>{product.agence.director.name}</Table.Cell> <!-- Affichage du nom du Directeur -->
-						<Table.Cell>{formatDate(product.createdAt)}</Table.Cell>
 						<Table.Cell>
-							<div class="flex">
+							<DirectorBadge director={product.agence.director} />
+						</Table.Cell>
+						<Table.Cell>
+							<div class="flex justify-end">
 								<div class="m-2">
 									<form method="POST" action="?/delete" use:deleteProductEnhance>
 										<input type="hidden" name="id" value={product.id} />
