@@ -2,9 +2,15 @@
 	<main class="w-full max-w-4xl rounded-lg border p-8">
 		<h1 class="text-4xl font-bold mb-4">Silver-Smok-Test</h1>
 		<p class="mb-6">
-			<span class="badge badge-blue">version 0.0.1</span>
-			<span class="badge badge-green">license MIT</span>
-			<span class="badge badge-brightgreen">PRs welcome</span>
+			<span class="inline-block mr-2 px-2 py-1 rounded bg-blue-500 text-white font-bold text-sm"
+				>version 0.0.1</span
+			>
+			<span class="inline-block mr-2 px-2 py-1 rounded bg-green-500 text-white font-bold text-sm"
+				>license MIT</span
+			>
+			<span class="inline-block mr-2 px-2 py-1 rounded bg-green-600 text-white font-bold text-sm"
+				>PRs welcome</span
+			>
 		</p>
 
 		<h2 class="text-2xl font-semibold mb-3">Description</h2>
@@ -115,11 +121,10 @@
 					class="text-blue-600 hover:underline"
 					target="_blank"
 					rel="noopener noreferrer">Shadcn UI</a
-				> : Une collection de composants préconçus construits avec Tailwind CSS et Radix, qui permet de
-				rapidement intégrer des composants accessibles et stylisés dans vos projets.
+				> : Une collection de composants préconçus construits avec Tailwind CSS et Radix, qui permet
+				de rapidement intégrer des composants accessibles et stylisés dans vos projets.
 			</li>
 		</ul>
-		
 
 		<h3 class="text-xl font-medium mt-4 mb-2">💻 Langage & Typage</h3>
 		<ul class="list-none space-y-2">
@@ -160,30 +165,31 @@
 		<p class="text-lg leading-relaxed mb-4">Voici les principaux scripts inclus dans le projet :</p>
 		<ul class="list-none space-y-2">
 			<li class="text-lg">
-				<code class="px-2 py-1 rounded">npm run dev</code> : Lance le serveur de développement.
+				<code class="px-2 py-1 rounded border">npm run dev</code> : Lance le serveur de développement.
 			</li>
 			<li class="text-lg">
-				<code class="px-2 py-1 rounded">npm run build</code> : Génére les fichiers de production après
-				avoir généré le client Prisma.
+				<code class="px-2 py-1 rounded border">npm run build</code> : Génére les fichiers de production
+				après avoir généré le client Prisma.
 			</li>
 			<li class="text-lg">
-				<code class="px-2 py-1 rounded">npm run preview</code> : Lance une prévisualisation de l'application
-				en mode production.
+				<code class="px-2 py-1 rounded border">npm run preview</code> : Lance une prévisualisation de
+				l'application en mode production.
 			</li>
 			<li class="text-lg">
-				<code class="px-2 py-1 rounded">npm run test</code> : Exécute les tests d'intégration et les
-				tests unitaires.
+				<code class="px-2 py-1 rounded border">npm run test</code> : Exécute les tests d'intégration
+				et les tests unitaires.
 			</li>
 			<li class="text-lg">
-				<code class="px-2 py-1 rounded">npm run lint</code> : Vérifie la qualité du code avec Prettier
-				et ESLint.
+				<code class="px-2 py-1 rounded border">npm run lint</code> : Vérifie la qualité du code avec
+				Prettier et ESLint.
 			</li>
 			<li class="text-lg">
-				<code class="px-2 py-1 rounded">npm run format</code> : Formate tout le code du projet avec Prettier.
+				<code class="px-2 py-1 rounded border">npm run format</code> : Formate tout le code du projet
+				avec Prettier.
 			</li>
 			<li class="text-lg">
-				<code class="px-2 py-1 rounded">npm run sampleData</code> : Exécute un script pour injecter des
-				données d'exemple dans la base de données.
+				<code class="px-2 py-1 rounded border">npm run sampleData</code> : Exécute un script pour injecter
+				des données d'exemple dans la base de données.
 			</li>
 		</ul>
 
@@ -191,46 +197,9 @@
 		<p class="text-lg leading-relaxed">
 			Pour installer les dépendances et lancer l'application en mode développement :
 		</p>
-		<pre class="-4 rounded"><code
+		<pre class="border p-4 rounded"><code
 				>npm install
 npm run dev</code
 			></pre>
 	</main>
 </div>
-
-<style>
-	/* Ajoute tes styles ici, ou utilise Tailwind CSS si déjà intégré */
-	.badge {
-		display: inline-block;
-		margin-right: 8px;
-		padding: 4px 8px;
-		border-radius: 4px;
-		font-size: 14px;
-		font-weight: bold;
-	}
-	.badge-blue {
-		background-color: #007bff;
-		color: white;
-	}
-	.badge-green {
-		background-color: #28a745;
-		color: white;
-	}
-	.badge-brightgreen {
-		background-color: #4caf50;
-		color: white;
-	}
-	h2,
-	h3 {
-		margin-top: 16px;
-		margin-bottom: 8px;
-	}
-	ul {
-		list-style-type: none;
-		padding-left: 0;
-	}
-	ul li::before {
-		content: '🚀 ';
-		margin-right: 8px;
-	}
-</style>
