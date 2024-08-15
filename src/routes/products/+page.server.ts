@@ -4,7 +4,6 @@ import { deleteProductSchema } from '$lib/schema/productsSchema.js';
 import { zod } from 'sveltekit-superforms/adapters';
 
 export const load = async () => {
-	// Charger les produits avec les informations sur l'agence associée
 	const products = await prisma.product.findMany({
 		include: {
 			agence: {
@@ -15,7 +14,6 @@ export const load = async () => {
 		}
 	});
 
-	// Valider la suppression avec le schéma approprié
 	const deleteProduct = await superValidate(zod(deleteProductSchema));
 
 	return {

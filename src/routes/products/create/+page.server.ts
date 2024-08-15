@@ -18,7 +18,6 @@ export const actions = {
 	create: async ({ request }) => {
 		const formData = await request.formData();
 
-		// Valide les données du formulaire
 		const form = await superValidate(formData, zod(createProductSchema));
 
 		if (!form.valid) {

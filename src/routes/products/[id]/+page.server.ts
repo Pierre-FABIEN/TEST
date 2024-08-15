@@ -1,13 +1,13 @@
 import { fail, redirect } from '@sveltejs/kit';
 import { message, superValidate } from 'sveltekit-superforms';
-import { updateProductSchema } from '$lib/schema/productsSchema'; // Assurez-vous d'avoir ce schéma
+import { updateProductSchema } from '$lib/schema/productsSchema';
 import { prisma } from '$lib/server';
 import { zod } from 'sveltekit-superforms/adapters';
 
 export const load = async ({ params }) => {
 	const product = await prisma.product.findUnique({
 		where: { id: params.id },
-		include: { agence: true } // Inclut l'agence associée si nécessaire
+		include: { agence: true }
 	});
 
 	const agencies = await prisma.agence.findMany();

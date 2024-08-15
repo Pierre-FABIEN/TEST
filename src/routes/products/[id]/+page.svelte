@@ -7,7 +7,7 @@
 
 	import { superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
-	import { updateProductSchema } from '$lib/schema/productsSchema'; // Assurez-vous d'avoir ce schéma
+	import { updateProductSchema } from '$lib/schema/productsSchema';
 
 	import { goto } from '$app/navigation';
 

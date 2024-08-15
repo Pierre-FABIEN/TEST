@@ -20,7 +20,7 @@
         const options = {
           chart: {
             type: 'radar',
-            height: '100%', // Assurez-vous que le graphique prend 100% de la hauteur du conteneur
+            height: '100%',
           },
           series: [
             {
