@@ -7,7 +7,11 @@ export const load = async () => {
 	// Charger les produits avec les informations sur l'agence associée
 	const products = await prisma.product.findMany({
 		include: {
-			agence: true,
+			agence: {
+				include: {
+					director: true
+				}
+			}
 		}
 	});
 

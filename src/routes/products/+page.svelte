@@ -52,6 +52,7 @@
 					<Table.Head>Stock</Table.Head>
 					<Table.Head>Price</Table.Head>
 					<Table.Head>Agence</Table.Head>
+					<Table.Head>Director</Table.Head> <!-- Nouvelle colonne pour le Directeur -->
 					<Table.Head>Created At</Table.Head>
 				</Table.Row>
 			</Table.Header>
@@ -64,6 +65,7 @@
 						<Table.Cell>
 							<AgenceBadge agence={product.agence} />
 						</Table.Cell>
+						<Table.Cell>{product.agence.director.name}</Table.Cell> <!-- Affichage du nom du Directeur -->
 						<Table.Cell>{formatDate(product.createdAt)}</Table.Cell>
 						<Table.Cell>
 							<div class="flex">
