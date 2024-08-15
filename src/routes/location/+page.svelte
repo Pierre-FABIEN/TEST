@@ -46,7 +46,7 @@
 					<Table.Head>State</Table.Head>
 					<Table.Head>ZIP</Table.Head>
 					<Table.Head>Country</Table.Head>
-					<Table.Head>User</Table.Head>
+					<Table.Head>Director</Table.Head>
 				</Table.Row>
 			</Table.Header>
 			<Table.Body>
@@ -57,7 +57,7 @@
 						<Table.Cell>{location.state}</Table.Cell>
 						<Table.Cell>{location.zip}</Table.Cell>
 						<Table.Cell>{location.country}</Table.Cell>
-						<Table.Cell>{location.user ? location.user.name : 'No User'}</Table.Cell>
+						<Table.Cell>{location.director ? location.director.name : 'No Director'}</Table.Cell>
 						<Table.Cell>
 							<div class="flex">
 								<div class="m-2">

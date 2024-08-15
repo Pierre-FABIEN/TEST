@@ -1,11 +1,11 @@
 import { fail } from '@sveltejs/kit';
 import { message, superValidate } from 'sveltekit-superforms';
-import { createUserSchema } from '$lib/schema/userSchema';
+import { createDirectorSchema } from '$lib/schema/directorsSchema';
 import { prisma } from '$lib/server';
 import { zod } from 'sveltekit-superforms/adapters';
 
 export const load = async () => {
-	const form = await superValidate(zod(createUserSchema));
+	const form = await superValidate(zod(createDirectorSchema));
 
 	return { form };
 };
@@ -14,7 +14,7 @@ export const actions = {
 	create: async ({ request }) => {
 		const formData = await request.formData();
 
-		const form = await superValidate(formData, zod(createUserSchema));
+		const form = await superValidate(formData, zod(createDirectorSchema));
 
 		if (!form.valid) {
 			return fail(400, {
@@ -24,7 +24,7 @@ export const actions = {
 		}
 
 		try {
-			await prisma.user.create({
+			await prisma.director.create({
 				data: {
 					name: form.data.name,
 					email: form.data.email,
@@ -34,11 +34,11 @@ export const actions = {
 				}
 			});
 
-			return message(form, 'User created successfully');
+			return message(form, 'Director created successfully');
 		} catch (error) {
-			console.error('Error creating user:', error);
+			console.error('Error creating directors:', error);
 			return fail(500, {
-				error: 'Failed to create user',
+				error: 'Failed to create directors',
 				form
 			});
 		}

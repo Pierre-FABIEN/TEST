@@ -11,7 +11,7 @@ const locationFieldsSchema = {
 		.min(5, 'ZIP code must be at least 5 digits long')
 		.max(5, 'ZIP code must have 5 digits maximum'),
 	country: z.string().min(2, 'Country is required'),
-	userId: z.string().min(1, 'User is required')
+	directorId: z.string().min(1, 'User is required')
 };
 
 // Create Location Schema

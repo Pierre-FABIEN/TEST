@@ -68,7 +68,6 @@ npm run dev
 
 
 A faire: 
--implémenter un composant pour la loc dans la page utilisateurs
 -Trouver le moyen de mettre en place des stats
 -Réaliser des stocks en fonctions de l'adresse
 -Partager le fait qu'il y ai une faiblesse sur la conception ULM

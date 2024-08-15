@@ -26,7 +26,7 @@
 
 	let locationSuggestions: string[] = $state([]);
 	let timeoutId: ReturnType<typeof setTimeout>;
-	let selectedUserName = $state('Select a user');
+	let selectedDirectorName = $state('Select a directors');
 
 	const fetchlocationSuggestions = async (query: string) => {
 		if (query.length < 3) {
@@ -60,16 +60,16 @@
 			setTimeout(() => goto('/location'), 0);
 		}
 
-		let userId = $updateLocationData.userId;
+		let directorId = $updateLocationData.directorId;
 
-		let selectedUser = data.users.find((user) => user.id === userId);
+		let selectedDirector = data.directors.find((directors) => directors.id === directorId);
 
-		selectedUserName = selectedUser ? selectedUser.name : 'User not found';
+		selectedDirectorName = selectedDirector ? selectedDirector.name : 'Director not found';
 	});
 
-	const selectUser = (user: any) => {
-		selectedUserName = user.name;
-		$updateLocationData.userId = user.id;
+	const selectDirector = (directors: any) => {
+		selectedDirectorName = directors.name;
+		$updateLocationData.directorId = directors.id;
 	};
 
 	const handleInput = (event: Event) => {
@@ -183,21 +183,21 @@
 		</div>
 
 		<div class="mb-4">
-			<Form.Field name="userId" form={updateLocationForm}>
+			<Form.Field name="directorId" form={updateLocationForm}>
 				<Form.Control let:attrs>
-					<Form.Label>User</Form.Label>
+					<Form.Label>Director</Form.Label>
 					<Popover.Root>
 						<Popover.Trigger class="border rounded px-4 py-2">
-							{selectedUserName}
+							{selectedDirectorName}
 						</Popover.Trigger>
 						<Popover.Content>
 							<div class="flex flex-col space-y-2">
-								{#each data.users as user}
+								{#each data.directors as directors}
 									<button
 										class="text-left hover:bg-gray-100 p-2 rounded"
-										onclick={() => selectUser(user)}
+										onclick={() => selectDirector(directors)}
 									>
-										{user.name}
+										{directors.name}
 									</button>
 								{/each}
 							</div>
@@ -208,7 +208,7 @@
 			</Form.Field>
 		</div>
 
-		<input hidden name="userId" bind:value={$updateLocationData.userId} />
+		<input hidden name="directorId" bind:value={$updateLocationData.directorId} />
 		<input hidden name="id" bind:value={$updateLocationData.id} />
 
 		<div class="mt-6">

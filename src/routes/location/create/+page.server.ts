@@ -5,13 +5,13 @@ import { prisma } from '$lib/server';
 import { zod } from 'sveltekit-superforms/adapters';
 
 export const load = async () => {
-	const users = await prisma.user.findMany();
+	const directors = await prisma.director.findMany();
 
 	const createLocation = await superValidate(zod(createLocationSchema));
 
 	return {
 		createLocation,
-		users
+		directors
 	};
 };
 
@@ -37,8 +37,8 @@ export const actions = {
 					state: form.data.state,
 					zip: form.data.zip,
 					country: form.data.country,
-					user: {
-						connect: { id: form.data.userId }
+					director: {
+						connect: { id: form.data.directorId }
 					}
 				}
 			});

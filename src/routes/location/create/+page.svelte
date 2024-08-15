@@ -60,11 +60,11 @@
 		}
 	});
 
-	let selectedUserName = $state('Select a user');
+	let selectedDirectorName = $state('Select a directors');
 
-	const selectUser = (user: any) => {
-		selectedUserName = user.name;
-		$createLocationData.userId = user.id;
+	const selectDirector = (directors: any) => {
+		selectedDirectorName = directors.name;
+		$createLocationData.directorId = directors.id;
 	};
 
 	const handleInput = (event: Event) => {
@@ -177,23 +177,23 @@
 			</Form.Field>
 		</div>
 
-		<!-- Dropdown Menu for User Selection -->
+		<!-- Dropdown Menu for Director Selection -->
 		<div class="mb-4">
-			<Form.Field name="userId" form={createLocationForm}>
+			<Form.Field name="directorId" form={createLocationForm}>
 				<Form.Control let:attrs>
-					<Form.Label>User</Form.Label>
+					<Form.Label>Director</Form.Label>
 					<Popover.Root>
 						<Popover.Trigger class="border rounded px-4 py-2">
-							{selectedUserName}
+							{selectedDirectorName}
 						</Popover.Trigger>
 						<Popover.Content>
 							<div class="flex flex-col space-y-2">
-								{#each data.users as user}
+								{#each data.directors as directors}
 									<button
 										class="text-left hover:bg-gray-100 p-2 rounded"
-										onclick={() => selectUser(user)}
+										onclick={() => selectDirector(directors)}
 									>
-										{user.name}
+										{directors.name}
 									</button>
 								{/each}
 							</div>
@@ -204,7 +204,7 @@
 			</Form.Field>
 		</div>
 
-		<input hidden name="userId" bind:value={$createLocationData.userId} />
+		<input hidden name="directorId" bind:value={$createLocationData.directorId} />
 
 		<div class="mt-6">
 			<Button type="submit">Create Location</Button>

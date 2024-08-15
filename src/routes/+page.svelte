@@ -90,7 +90,7 @@
 					class="text-blue-600 hover:underline"
 					target="_blank"
 					rel="noopener noreferrer">Playwright</a
-				> : Un outil puissant pour les tests End-to-End (E2E), simulant les actions des utilisateurs
+				> : Un outil puissant pour les tests End-to-End (E2E), simulant les actions des Directors
 				à travers différents navigateurs pour garantir la fiabilité de l'application.
 			</li>
 			<li class="text-lg">

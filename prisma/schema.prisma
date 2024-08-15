@@ -7,14 +7,14 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model User {
+model Director {
   id          String      @id @map("_id") @default(auto()) @db.ObjectId
   name        String
   email       String      @unique
   age         Int      
   createdAt   DateTime    @default(now())
   isActive    Boolean     @default(true)
-  locations   Location[]  @relation("UserLocations")
+  locations   Location[]  @relation("DirectorLocations")
 }
 
 model Location {
@@ -24,6 +24,6 @@ model Location {
   state     String
   zip       String
   country   String
-  userId    String   @db.ObjectId
-  user      User     @relation("UserLocations", fields: [userId], references: [id], onDelete: Cascade)
+  directorId    String   @db.ObjectId
+  director      Director     @relation("DirectorLocations", fields: [directorId], references: [id], onDelete: Cascade)
 }

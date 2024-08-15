@@ -6,7 +6,7 @@ import { zod } from 'sveltekit-superforms/adapters';
 export const load = async () => {
 	const locations = await prisma.location.findMany({
 		include: {
-			user: true
+			director: true
 		}
 	});
 

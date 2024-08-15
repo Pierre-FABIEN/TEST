@@ -3,18 +3,22 @@
 	import * as Table from '$lib/components/ui/table';
 	import { toast } from 'svelte-sonner';
 
-	import { deleteUserSchema } from '$lib/schema/userSchema.js';
+	import { deleteDirectorSchema } from '$lib/schema/directorsSchema.js';
 	import { superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
+	import LocationBadge from '$lib/components/LocationBadge.svelte';
 
 	let { data } = $props();
 
-	const deleteUserForm = superForm(data.deleteUser, {
-		validators: zodClient(deleteUserSchema),
-		id: 'deleteUserForm'
+	console.log(data);
+	
+
+	const deleteDirectorForm = superForm(data.deleteDirector, {
+		validators: zodClient(deleteDirectorSchema),
+		id: 'deleteDirectorForm'
 	});
 
-	const { enhance: deleteUserEnhance, message: deleteUserMessage } = deleteUserForm;
+	const { enhance: deleteDirectorEnhance, message: deleteDirectorMessage } = deleteDirectorForm;
 
 	const formatDate = (dateString: string | Date) => {
 		const date = new Date(dateString);
@@ -22,8 +26,8 @@
 	};
 
 	$effect(() => {
-		if ($deleteUserMessage === 'User deleted successfully') {
-			toast.success($deleteUserMessage);
+		if ($deleteDirectorMessage === 'Director deleted successfully') {
+			toast.success($deleteDirectorMessage);
 		}
 	});
 </script>
@@ -31,8 +35,8 @@
 <div class="mx-auto mt-8 max-w-5xl px-4 sm:px-6 lg:px-8">
 	<div class="space-y-6 rounded-md border p-4">
 		<div class="flex justify-between">
-			<h1>Utilisateurs</h1>
-			<a href="user/create">
+			<h1>Directors</h1>
+			<a href="directors/create">
 				<Button variant="outline">
 					<svg xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 24 24"
 						><path
@@ -55,23 +59,23 @@
 				</Table.Row>
 			</Table.Header>
 			<Table.Body>
-				{#each data.users as user (user.id)}
+				{#each data.directors as directors (directors.id)}
 					<Table.Row>
-						<Table.Cell>{user.name}</Table.Cell>
-						<Table.Cell>{user.email}</Table.Cell>
-						<Table.Cell>{user.age}</Table.Cell>
+						<Table.Cell>{directors.name}</Table.Cell>
+						<Table.Cell>{directors.email}</Table.Cell>
+						<Table.Cell>{directors.age}</Table.Cell>
 						<Table.Cell>
-							{#each user.locations as location}
-								{location.city},
+							{#each directors.locations as location}
+							<LocationBadge location={location} />
 							{/each}
 						</Table.Cell>
-						<Table.Cell>{formatDate(user.createdAt)}</Table.Cell>
-						<Table.Cell>{user.isActive ? 'Yes' : 'No'}</Table.Cell>
+						<Table.Cell>{formatDate(directors.createdAt)}</Table.Cell>
+						<Table.Cell>{directors.isActive ? 'Yes' : 'No'}</Table.Cell>
 						<Table.Cell>
 							<div class="flex">
 								<div class="m-2">
-									<form method="POST" action="?/delete" use:deleteUserEnhance>
-										<input type="hidden" name="id" value={user.id} />
+									<form method="POST" action="?/delete" use:deleteDirectorEnhance>
+										<input type="hidden" name="id" value={directors.id} />
 										<Button type="submit" variant="outline">
 											<svg
 												xmlns="http://www.w3.org/2000/svg"
@@ -87,7 +91,7 @@
 									</form>
 								</div>
 								<div class="m-2">
-									<a href="user/{user.id}">
+									<a href="directors/{directors.id}">
 										<Button variant="outline">
 											<svg
 												xmlns="http://www.w3.org/2000/svg"

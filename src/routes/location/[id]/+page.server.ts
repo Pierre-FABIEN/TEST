@@ -9,7 +9,7 @@ export const load = async ({ params }) => {
 		where: { id: params.id }
 	});
 
-	const users = await prisma.user.findMany();
+	const directors = await prisma.director.findMany();
 
 	if (!location) {
 		throw redirect(302, '/location/not-found');
@@ -19,7 +19,7 @@ export const load = async ({ params }) => {
 
 	return {
 		location,
-		users,
+		directors,
 		updateLocation
 	};
 };
@@ -60,7 +60,7 @@ export const actions = {
 					state: form.data.state,
 					zip: form.data.zip,
 					country: form.data.country,
-					userId: form.data.userId
+					directorId: form.data.directorId
 				}
 			});
 

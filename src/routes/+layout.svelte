@@ -40,10 +40,10 @@
 				Accueil
 			</a>
 			<a
-				href="/user"
-				class={`text-sm font-medium ${$page.url.pathname === '/user' ? 'text-primary' : 'text-muted-foreground'} transition-colors hover:text-primary`}
+				href="/directors"
+				class={`text-sm font-medium ${$page.url.pathname === '/directors' ? 'text-primary' : 'text-muted-foreground'} transition-colors hover:text-primary`}
 			>
-				Utilisateurs
+				Directors
 			</a>
 			<a
 				href="/location"
