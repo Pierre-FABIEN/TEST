@@ -46,11 +46,10 @@
 				Directors
 			</a>
 			<a
-				href="/location"
-				class={`text-sm font-medium ${$page.url.pathname === '/location' ? 'text-primary' : 'text-muted-foreground'} transition-colors hover:text-primary`}
+				href="/agencies"
+				class={`text-sm font-medium ${$page.url.pathname === '/agencies' ? 'text-primary' : 'text-muted-foreground'} transition-colors hover:text-primary`}
 			>
-				Location
-			</a>
+				Agencies			</a>
 		</nav>
 	</div>
 

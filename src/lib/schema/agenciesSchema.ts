@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 // Common fields schema
-const locationFieldsSchema = {
+const agenceFieldsSchema = {
 	street: z.string().min(2, 'Street is required'),
 	city: z.string().min(2, 'City is required'),
 	state: z.string().min(2, 'State is required'),
@@ -14,20 +14,20 @@ const locationFieldsSchema = {
 	directorId: z.string().min(1, 'User is required')
 };
 
-// Create Location Schema
-export const createLocationSchema = z.object(locationFieldsSchema);
+// Create Agence Schema
+export const createAgenceSchema = z.object(agenceFieldsSchema);
 
-// Update Location Schema
-export const updateLocationSchema = z.object({
+// Update Agence Schema
+export const updateAgenceSchema = z.object({
 	id: z.string().min(1).optional(),
-	...z.object(locationFieldsSchema).partial().shape
+	...z.object(agenceFieldsSchema).partial().shape
 });
 
-// Delete Location Schema
-export const deleteLocationSchema = z.object({
+// Delete Agence Schema
+export const deleteAgenceSchema = z.object({
 	id: z.string().min(1, 'ID is required').optional()
 });
 
-export type CreateLocationInput = z.infer<typeof createLocationSchema>;
-export type UpdateLocationInput = z.infer<typeof updateLocationSchema>;
-export type DeleteLocationInput = z.infer<typeof deleteLocationSchema>;
+export type CreateAgenceInput = z.infer<typeof createAgenceSchema>;
+export type UpdateAgenceInput = z.infer<typeof updateAgenceSchema>;
+export type DeleteAgenceInput = z.infer<typeof deleteAgenceSchema>;

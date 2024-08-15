@@ -14,10 +14,10 @@ model Director {
   age         Int      
   createdAt   DateTime    @default(now())
   isActive    Boolean     @default(true)
-  locations   Location[]  @relation("DirectorLocations")
+  agencies   Agence[]  @relation("DirectorAgencies")
 }
 
-model Location {
+model Agence {
   id        String   @id @map("_id") @default(auto()) @db.ObjectId
   street    String
   city      String
@@ -25,5 +25,5 @@ model Location {
   zip       String
   country   String
   directorId    String   @db.ObjectId
-  director      Director     @relation("DirectorLocations", fields: [directorId], references: [id], onDelete: Cascade)
+  director      Director     @relation("DirectorAgencies", fields: [directorId], references: [id], onDelete: Cascade)
 }

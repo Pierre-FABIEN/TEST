@@ -6,7 +6,7 @@
 	import { deleteDirectorSchema } from '$lib/schema/directorsSchema.js';
 	import { superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
-	import LocationBadge from '$lib/components/LocationBadge.svelte';
+	import AgenceBadge from '$lib/components/AgenceBadge.svelte';
 
 	let { data } = $props();
 
@@ -65,8 +65,8 @@
 						<Table.Cell>{directors.email}</Table.Cell>
 						<Table.Cell>{directors.age}</Table.Cell>
 						<Table.Cell>
-							{#each directors.locations as location}
-							<LocationBadge location={location} />
+							{#each directors.agencies as agence}
+							<AgenceBadge agence={agence} />
 							{/each}
 						</Table.Cell>
 						<Table.Cell>{formatDate(directors.createdAt)}</Table.Cell>

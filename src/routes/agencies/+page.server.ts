@@ -1,20 +1,20 @@
 import { prisma } from '$lib/server';
 import { fail, message, superValidate } from 'sveltekit-superforms';
-import { deleteLocationSchema } from '$lib/schema/locationSchema';
+import { deleteAgenceSchema } from '$lib/schema/agenciesSchema';
 import { zod } from 'sveltekit-superforms/adapters';
 
 export const load = async () => {
-	const locations = await prisma.location.findMany({
+	const agencies = await prisma.agence.findMany({
 		include: {
 			director: true
 		}
 	});
 
-	const deleteLocation = await superValidate(zod(deleteLocationSchema));
+	const deleteAgence = await superValidate(zod(deleteAgenceSchema));
 
 	return {
-		locations,
-		deleteLocation
+		agencies,
+		deleteAgence
 	};
 };
 
@@ -22,7 +22,7 @@ export const actions = {
 	delete: async ({ request }) => {
 		const formData = await request.formData();
 
-		const form = await superValidate(formData, zod(deleteLocationSchema));
+		const form = await superValidate(formData, zod(deleteAgenceSchema));
 
 		if (!form.valid || !form.data.id) {
 			return fail(400, {
@@ -32,14 +32,14 @@ export const actions = {
 		}
 
 		try {
-			await prisma.location.delete({
+			await prisma.agence.delete({
 				where: { id: form.data.id }
 			});
 
-			return message(form, 'Location deleted successfully');
+			return message(form, 'Agence deleted successfully');
 		} catch (error) {
-			console.error('Error deleting location:', error);
-			return fail(500, { error: 'Failed to delete location', form });
+			console.error('Error deleting agence:', error);
+			return fail(500, { error: 'Failed to delete agence', form });
 		}
 	}
 };

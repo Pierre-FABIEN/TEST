@@ -1,16 +1,16 @@
 import { fail } from '@sveltejs/kit';
 import { message, superValidate } from 'sveltekit-superforms';
-import { createLocationSchema } from '$lib/schema/locationSchema';
+import { createAgenceSchema } from '$lib/schema/agenciesSchema';
 import { prisma } from '$lib/server';
 import { zod } from 'sveltekit-superforms/adapters';
 
 export const load = async () => {
 	const directors = await prisma.director.findMany();
 
-	const createLocation = await superValidate(zod(createLocationSchema));
+	const createAgence = await superValidate(zod(createAgenceSchema));
 
 	return {
-		createLocation,
+		createAgence,
 		directors
 	};
 };
@@ -20,7 +20,7 @@ export const actions = {
 		const formData = await request.formData();
 
 		// Valide les données du formulaire
-		const form = await superValidate(formData, zod(createLocationSchema));
+		const form = await superValidate(formData, zod(createAgenceSchema));
 
 		if (!form.valid) {
 			return fail(400, {
@@ -30,7 +30,7 @@ export const actions = {
 		}
 
 		try {
-			await prisma.location.create({
+			await prisma.agence.create({
 				data: {
 					street: form.data.street,
 					city: form.data.city,
@@ -43,11 +43,11 @@ export const actions = {
 				}
 			});
 
-			return message(form, 'Location created successfully');
+			return message(form, 'Agence created successfully');
 		} catch (error) {
-			console.error('Error creating location:', error);
+			console.error('Error creating agence:', error);
 			return fail(500, {
-				error: 'Failed to create location',
+				error: 'Failed to create agence',
 				form
 			});
 		}

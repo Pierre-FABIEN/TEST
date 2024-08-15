@@ -3,22 +3,22 @@
 	import * as Table from '$lib/components/ui/table';
 	import { toast } from 'svelte-sonner';
 
-	import { deleteLocationSchema } from '$lib/schema/locationSchema.js';
+	import { deleteAgenceSchema } from '$lib/schema/agenciesSchema.js';
 	import { superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
 
 	let { data } = $props();
 
-	const deleteLocationForm = superForm(data.deleteLocation, {
-		validators: zodClient(deleteLocationSchema),
-		id: 'deleteLocationForm'
+	const deleteAgenceForm = superForm(data.deleteAgence, {
+		validators: zodClient(deleteAgenceSchema),
+		id: 'deleteAgenceForm'
 	});
 
-	const { enhance: deleteLocationEnhance, message: deleteLocationMessage } = deleteLocationForm;
+	const { enhance: deleteAgenceEnhance, message: deleteAgenceMessage } = deleteAgenceForm;
 
 	$effect(() => {
-		if ($deleteLocationMessage === 'Location deleted successfully') {
-			toast.success($deleteLocationMessage);
+		if ($deleteAgenceMessage === 'Agence deleted successfully') {
+			toast.success($deleteAgenceMessage);
 		}
 	});
 </script>
@@ -26,8 +26,8 @@
 <div class="mx-auto mt-8 max-w-5xl px-4 sm:px-6 lg:px-8">
 	<div class="space-y-6 rounded-md border p-4">
 		<div class="flex justify-between">
-			<h1>Locations</h1>
-			<a href="location/create">
+			<h1>Agencies</h1>
+			<a href="agencies/create">
 				<Button variant="outline">
 					<svg xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 24 24"
 						><path
@@ -50,19 +50,19 @@
 				</Table.Row>
 			</Table.Header>
 			<Table.Body>
-				{#each data.locations as location (location.id)}
+				{#each data.agencies as agence (agence.id)}
 					<Table.Row>
-						<Table.Cell>{location.street}</Table.Cell>
-						<Table.Cell>{location.city}</Table.Cell>
-						<Table.Cell>{location.state}</Table.Cell>
-						<Table.Cell>{location.zip}</Table.Cell>
-						<Table.Cell>{location.country}</Table.Cell>
-						<Table.Cell>{location.director ? location.director.name : 'No Director'}</Table.Cell>
+						<Table.Cell>{agence.street}</Table.Cell>
+						<Table.Cell>{agence.city}</Table.Cell>
+						<Table.Cell>{agence.state}</Table.Cell>
+						<Table.Cell>{agence.zip}</Table.Cell>
+						<Table.Cell>{agence.country}</Table.Cell>
+						<Table.Cell>{agence.director ? agence.director.name : 'No Director'}</Table.Cell>
 						<Table.Cell>
 							<div class="flex">
 								<div class="m-2">
-									<form method="POST" action="?/delete" use:deleteLocationEnhance>
-										<input type="hidden" name="id" value={location.id} />
+									<form method="POST" action="?/delete" use:deleteAgenceEnhance>
+										<input type="hidden" name="id" value={agence.id} />
 										<Button type="submit" variant="outline">
 											<svg
 												xmlns="http://www.w3.org/2000/svg"
@@ -78,7 +78,7 @@
 									</form>
 								</div>
 								<div class="m-2">
-									<a href="location/{location.id}">
+									<a href="agencies/{agence.id}">
 										<Button variant="outline">
 											<svg
 												xmlns="http://www.w3.org/2000/svg"

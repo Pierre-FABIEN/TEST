@@ -7,37 +7,37 @@
 
 	import { superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
-	import { updateLocationSchema } from '$lib/schema/locationSchema';
+	import { updateAgenceSchema } from '$lib/schema/agenciesSchema';
 
 	import { goto } from '$app/navigation';
 
 	let { data } = $props();
 
-	const updateLocationForm = superForm(data.updateLocation, {
-		validators: zodClient(updateLocationSchema),
-		id: 'updateLocationForm'
+	const updateAgenceForm = superForm(data.updateAgence, {
+		validators: zodClient(updateAgenceSchema),
+		id: 'updateAgenceForm'
 	});
 
 	const {
-		form: updateLocationData,
-		enhance: updateLocationEnhance,
-		message: updateLocationMessage
-	} = updateLocationForm;
+		form: updateAgenceData,
+		enhance: updateAgenceEnhance,
+		message: updateAgenceMessage
+	} = updateAgenceForm;
 
-	let locationSuggestions: string[] = $state([]);
+	let agenceSuggestions: string[] = $state([]);
 	let timeoutId: ReturnType<typeof setTimeout>;
 	let selectedDirectorName = $state('Select a directors');
 
-	const fetchlocationSuggestions = async (query: string) => {
+	const fetchagenceSuggestions = async (query: string) => {
 		if (query.length < 3) {
-			locationSuggestions = [];
+			agenceSuggestions = [];
 			return;
 		}
 
 		try {
 			const response = await fetch(`/api/open-cage-data?q=${encodeURIComponent(query)}`);
 			const data = await response.json();
-			locationSuggestions = data;
+			agenceSuggestions = data;
 		} catch (error) {
 			console.error('Error fetching address suggestions:', error);
 		}
@@ -46,21 +46,21 @@
 	const selectSuggestion = (suggestion: any) => {
 		const { house_number, road, city, town, village, state, postcode, country } =
 			suggestion.components;
-		$updateLocationData.street = `${house_number || ''} ${road || ''}`.trim();
-		$updateLocationData.city = city || town || village || '';
-		$updateLocationData.state = state || '';
-		$updateLocationData.zip = postcode || '';
-		$updateLocationData.country = country || '';
-		locationSuggestions = [];
+		$updateAgenceData.street = `${house_number || ''} ${road || ''}`.trim();
+		$updateAgenceData.city = city || town || village || '';
+		$updateAgenceData.state = state || '';
+		$updateAgenceData.zip = postcode || '';
+		$updateAgenceData.country = country || '';
+		agenceSuggestions = [];
 	};
 
 	$effect(() => {
-		if ($updateLocationMessage === 'Location updated successfully') {
-			toast.success($updateLocationMessage);
-			setTimeout(() => goto('/location'), 0);
+		if ($updateAgenceMessage === 'Agence updated successfully') {
+			toast.success($updateAgenceMessage);
+			setTimeout(() => goto('/agencies'), 0);
 		}
 
-		let directorId = $updateLocationData.directorId;
+		let directorId = $updateAgenceData.directorId;
 
 		let selectedDirector = data.directors.find((directors) => directors.id === directorId);
 
@@ -69,25 +69,25 @@
 
 	const selectDirector = (directors: any) => {
 		selectedDirectorName = directors.name;
-		$updateLocationData.directorId = directors.id;
+		$updateAgenceData.directorId = directors.id;
 	};
 
 	const handleInput = (event: Event) => {
 		const input = event.target as HTMLInputElement;
 		clearTimeout(timeoutId);
 		timeoutId = setTimeout(() => {
-			fetchlocationSuggestions(input.value);
+			fetchagenceSuggestions(input.value);
 		}, 1000);
 	};
 </script>
 
 <div class="max-w-lg mx-auto mt-8">
-	<h1 class="text-2xl font-bold mb-4">Create a New Location</h1>
+	<h1 class="text-2xl font-bold mb-4">Create a New Agence</h1>
 
-	{#if locationSuggestions}
+	{#if agenceSuggestions}
 		<h2>Suggestions:</h2>
 		<ul class="rounded border p-2">
-			{#each locationSuggestions.results as suggestion}
+			{#each agenceSuggestions.results as suggestion}
 				<li>
 					<button
 						class="cursor-pointer"
@@ -101,16 +101,16 @@
 		</ul>
 	{/if}
 
-	<form method="POST" action="?/update" use:updateLocationEnhance>
+	<form method="POST" action="?/update" use:updateAgenceEnhance>
 		<div class="mb-4">
-			<Form.Field name="street" form={updateLocationForm}>
+			<Form.Field name="street" form={updateAgenceForm}>
 				<Form.Control let:attrs>
 					<Form.Label>Street</Form.Label>
 					<Input
 						oninput={handleInput}
 						{...attrs}
 						type="text"
-						bind:value={$updateLocationData.street}
+						bind:value={$updateAgenceData.street}
 						required
 					/>
 				</Form.Control>
@@ -119,14 +119,14 @@
 		</div>
 
 		<div class="mb-4">
-			<Form.Field name="city" form={updateLocationForm}>
+			<Form.Field name="city" form={updateAgenceForm}>
 				<Form.Control let:attrs>
 					<Form.Label>City</Form.Label>
 					<Input
 						oninput={handleInput}
 						{...attrs}
 						type="text"
-						bind:value={$updateLocationData.city}
+						bind:value={$updateAgenceData.city}
 						required
 					/>
 				</Form.Control>
@@ -135,14 +135,14 @@
 		</div>
 
 		<div class="mb-4">
-			<Form.Field name="state" form={updateLocationForm}>
+			<Form.Field name="state" form={updateAgenceForm}>
 				<Form.Control let:attrs>
 					<Form.Label>State</Form.Label>
 					<Input
 						oninput={handleInput}
 						{...attrs}
 						type="text"
-						bind:value={$updateLocationData.state}
+						bind:value={$updateAgenceData.state}
 						required
 					/>
 				</Form.Control>
@@ -151,14 +151,14 @@
 		</div>
 
 		<div class="mb-4">
-			<Form.Field name="zip" form={updateLocationForm}>
+			<Form.Field name="zip" form={updateAgenceForm}>
 				<Form.Control let:attrs>
 					<Form.Label>ZIP Code</Form.Label>
 					<Input
 						oninput={handleInput}
 						{...attrs}
 						type="text"
-						bind:value={$updateLocationData.zip}
+						bind:value={$updateAgenceData.zip}
 						required
 					/>
 				</Form.Control>
@@ -167,14 +167,14 @@
 		</div>
 
 		<div class="mb-4">
-			<Form.Field name="country" form={updateLocationForm}>
+			<Form.Field name="country" form={updateAgenceForm}>
 				<Form.Control let:attrs>
 					<Form.Label>Country</Form.Label>
 					<Input
 						oninput={handleInput}
 						{...attrs}
 						type="text"
-						bind:value={$updateLocationData.country}
+						bind:value={$updateAgenceData.country}
 						required
 					/>
 				</Form.Control>
@@ -183,7 +183,7 @@
 		</div>
 
 		<div class="mb-4">
-			<Form.Field name="directorId" form={updateLocationForm}>
+			<Form.Field name="directorId" form={updateAgenceForm}>
 				<Form.Control let:attrs>
 					<Form.Label>Director</Form.Label>
 					<Popover.Root>
@@ -208,11 +208,11 @@
 			</Form.Field>
 		</div>
 
-		<input hidden name="directorId" bind:value={$updateLocationData.directorId} />
-		<input hidden name="id" bind:value={$updateLocationData.id} />
+		<input hidden name="directorId" bind:value={$updateAgenceData.directorId} />
+		<input hidden name="id" bind:value={$updateAgenceData.id} />
 
 		<div class="mt-6">
-			<Button type="submit">Create Location</Button>
+			<Button type="submit">Create Agence</Button>
 		</div>
 	</form>
 </div>
