@@ -1,7 +1,6 @@
 import { prisma } from '$lib/server';
 
 export const load = async () => {
-  // Récupérer les données des agences avec le stock total
   const agenciesWithStock = await prisma.agence.findMany({
     select: {
       street: true,
@@ -14,7 +13,6 @@ export const load = async () => {
     },
   });
 
-  // Calculer le stock total par agence
   const stockData = agenciesWithStock.map((agence) => {
     return {
       agence: `${agence.street}, ${agence.city}`,
@@ -22,8 +20,6 @@ export const load = async () => {
     };
   });
 
-  console.log(stockData);
-  
   return {
     stockData,
   };

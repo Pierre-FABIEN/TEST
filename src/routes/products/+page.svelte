@@ -11,8 +11,6 @@
 
 	let { data } = $props();
 
-	console.log(data);
-	
 	const deleteProductForm = superForm(data.deleteProduct, {
 		validators: zodClient(deleteProductSchema),
 		id: 'deleteProductForm'

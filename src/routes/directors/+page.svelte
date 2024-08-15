@@ -10,8 +10,6 @@
 
 	let { data } = $props();
 
-	console.log(data);
-
 	const deleteDirectorForm = superForm(data.deleteDirector, {
 		validators: zodClient(deleteDirectorSchema),
 		id: 'deleteDirectorForm'
