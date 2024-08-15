@@ -37,6 +37,7 @@ export const actions = {
 					state: form.data.state,
 					zip: form.data.zip,
 					country: form.data.country,
+					createdAt: form.data.createdAt,
 					director: {
 						connect: { id: form.data.directorId }
 					}
