@@ -28,9 +28,6 @@ export const actions = {
 	update: async ({ request }) => {
 		const formData = await request.formData();
 
-		console.log(formData, 'form data');
-
-		// Récupérer et valider les données du formulaire
 		const form = await superValidate(formData, zod(updateAgenceSchema));
 
 		if (!form.valid) {
@@ -40,7 +37,6 @@ export const actions = {
 			});
 		}
 
-		// Vérifier si l'ID est présent
 		const agenceId = form.data.id;
 
 		if (!agenceId) {
@@ -51,7 +47,6 @@ export const actions = {
 		}
 
 		try {
-			// Mise à jour de la localisation dans la base de données
 			await prisma.agence.update({
 				where: { id: agenceId },
 				data: {

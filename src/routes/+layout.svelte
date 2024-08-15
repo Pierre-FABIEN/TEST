@@ -10,7 +10,6 @@
 	let loading = $state(true);
 	let value = $state(0);
 
-	// Réactivité automatique avec Svelte 5
 	$effect(() => {
 		isClient = true;
 		const timer = setInterval(() => {

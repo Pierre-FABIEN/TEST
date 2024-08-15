@@ -22,7 +22,7 @@ export const actions = {
 	delete: async ({ request }) => {
 		const formData = await request.formData();
 
-		const form = await superValidate(formData, zod(deleteDirectorSchema)); // Assure-toi que l'adaptateur zod est utilisé correctement
+		const form = await superValidate(formData, zod(deleteDirectorSchema));
 
 		if (!form.valid || !form.data.id) {
 			return fail(400, {
