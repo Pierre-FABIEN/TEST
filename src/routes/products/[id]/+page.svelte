@@ -37,6 +37,7 @@
 		let selectedAgence = data.agencies.find((agence) => agence.id === agenceId);
 
 		selectedAgenceName = selectedAgence ? `${selectedAgence.street}, ${selectedAgence.city}` : 'Agency not found';
+        
 	});
 
 	const selectAgence = (agence: any) => {
@@ -89,16 +90,21 @@
 							{selectedAgenceName}
 						</Popover.Trigger>
 						<Popover.Content>
-							<div class="flex flex-col space-y-2">
-								{#each data.agencies as agence}
-									<button
-										class="text-left hover:bg-gray-100 p-2 rounded"
-										onclick={() => selectAgence(agence)}
-									>
-										{agence.street}, {agence.city}
-									</button>
-								{/each}
-							</div>
+                            <div class="flex flex-col space-y-4">
+                                {#each data.agencies as agence}
+                                    <button
+                                        class="p-4 rounded shadow-md border cursor-pointer"
+                                        onclick={() => selectAgence(agence)}
+                                    >
+                                        <h2 class="text-sm font-semibold text-left">{agence.street}, {agence.city}</h2>
+                                        <hr class="my-2" />
+                                        <div class="text-sm text-left">
+                                            <p><strong>State:</strong> {agence.state}</p>
+                                            <p><strong>ZIP Code:</strong> {agence.zip}</p>
+                                            <p><strong>Country:</strong> {agence.country}</p>                                  
+                                        </div>
+                                    </button>
+                                {/each}
 						</Popover.Content>
 					</Popover.Root>
 				</Form.Control>

@@ -84,7 +84,7 @@
                             <div class="flex flex-col space-y-4">
                                 {#each data.agencies as agence}
                                     <button
-                                        class="p-4 bg-white rounded shadow-md border cursor-pointer"
+                                        class="p-4 rounded shadow-md border cursor-pointer"
                                         onclick={() => selectAgence(agence)}
                                     >
                                         <h2 class="text-sm font-semibold text-left">{agence.street}, {agence.city}</h2>

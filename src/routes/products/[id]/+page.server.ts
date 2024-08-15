@@ -29,7 +29,6 @@ export const actions = {
 	update: async ({ request }) => {
 		const formData = await request.formData();
 
-		// Récupérer et valider les données du formulaire
 		const form = await superValidate(formData, zod(updateProductSchema));
 
 		if (!form.valid) {
@@ -39,7 +38,6 @@ export const actions = {
 			});
 		}
 
-		// Vérifier si l'ID est présent
 		const productId = form.data.id;
 
 		if (!productId) {
@@ -50,14 +48,13 @@ export const actions = {
 		}
 
 		try {
-			// Mise à jour du produit dans la base de données
 			await prisma.product.update({
 				where: { id: productId },
 				data: {
 					name: form.data.name,
 					stock: form.data.stock,
 					price: form.data.price,
-					agenceId: form.data.agenceId // Met à jour l'agence associée
+					agenceId: form.data.agenceId
 				}
 			});
 
