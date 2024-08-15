@@ -44,6 +44,7 @@
 	"type": "module",
 	"dependencies": {
 		"@prisma/client": "^5.18.0",
+		"apexcharts": "^3.52.0",
 		"bits-ui": "^0.21.13",
 		"clsx": "^2.1.1",
 		"formsnap": "^1.0.1",

@@ -57,6 +57,12 @@
 			>
 				Products
 			</a>
+			<a
+			href="/stats"
+			class={`text-sm font-medium ${$page.url.pathname === '/stats' ? 'text-primary' : 'text-muted-foreground'} transition-colors hover:text-primary`}
+			>
+					statistical
+			</a>
 		</nav>
 	</div>
 
