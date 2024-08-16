@@ -323,58 +323,64 @@ npm run dev</code
 			></pre>
 	</article>
 </div>
-
 <div class="flex justify-center mt-10">
 	<article class="w-full max-w-4xl rounded-lg border p-8 m-2">
 		<h1 class="text-4xl font-bold mb-4">Motivations</h1>
 		<section class="mb-8">
-			<h2 class="text-2xl font-semibold  mb-4">Un an focus sur sveltekit</h2>
-			<p class=" m-4">
-			  Vous pouvez remarquer sur mon CV mon engouement pour sveltekit et les technologies autour de cet éco-systèmes.
-			  Cela fait plus de 1 an que je m'interresse svelte en commencant par créer un ensemble d'outils pour le front-end.
+			<h2 class="text-2xl font-semibold mb-4">Un an de focus sur SvelteKit</h2>
+			<p class="m-4">
+				Vous pouvez remarquer sur mon CV mon engouement pour SvelteKit et les technologies autour de cet écosystème. Cela fait plus d'un an que je m'intéresse à Svelte, en commençant par créer un ensemble d'outils pour le front-end.
 			</p>
 
 			<ul class="list-disc list-inside">
 				<li>SmoothScroll</li>
-				<li>Transition de page (pour le developpement créatif afin d'avoir une navigation fluide)</li>
-				<li>Darkmode natif</li>
-				<li>Gestion du Préloader avec le store</li>
-				<li>Gestion des etats de ThreeJs avec le store</li>
+				<li>Transition de page (pour le développement créatif afin d'assurer une navigation fluide)</li>
+				<li>Mode sombre natif</li>
+				<li>Gestion du préchargeur avec le store</li>
+				<li>Gestion des états de ThreeJs avec le store</li>
 				<li>PWA</li>
-				<li>Et plus sur des choses futiles qui on pu ajouter de l'experience</li>
+				<li>Et d'autres éléments qui ont pu enrichir mon expérience</li>
 			</ul>
-			  
-			<p class=" m-4">
-				C'est à partir de décembre 2023 que j'ai commencé mon apprentissage intensif sur sveltekit. J'ai commencé par créer un boilerplate avec un backend dissocié sur NodeJs. Réunissant tout les outils que j'ai pu auparavant déployer sur svelte. J'ai décidé de prendre en charge le fullstack afin de réaliser une experience complête pour tout les types de projet rcihes et complexes. J'ai mis un accent spécifique sur l'authentification et la sécurité en prennant en charge l'authentification de manière native. J'ai réalisé ce projet a partir d'une API RestFul et j'ai migré ensuite sur GraphQL. Problême, ce concept doit être déployer sur un serveur payant.
+
+			<p class="m-4">
+				C'est à partir de décembre 2023 que j'ai commencé mon apprentissage intensif de SvelteKit. J'ai commencé par créer un boilerplate avec un backend dissocié sur Node.js, réunissant tous les outils que j'avais préalablement développés sur Svelte. J'ai décidé de prendre en charge le fullstack afin de réaliser une expérience complète pour tous types de projets riches et complexes. J'ai mis un accent particulier sur l'authentification et la sécurité, en prenant en charge l'authentification de manière native. J'ai réalisé ce projet à partir d'une API RESTful, puis j'ai migré vers GraphQL. Le problème est que ce concept doit être déployé sur un serveur payant.
 			</p>
 
 			<ul class="list-disc list-inside">
-				<li>Authentification:</li>
-				<li>Roles et permissions</li>
-				<li>Gestion token approfondie (black listed token)</li>
-				<li>Sessions pour déconnecter a distances ses comptes</li>
+				<li>Authentification</li>
+				<li>Rôles et permissions</li>
+				<li>Gestion avancée des tokens (tokens mis en liste noire)</li>
+				<li>Sessions pour déconnecter ses comptes à distance</li>
 				<li>Rate Limiter</li>
-				<li>Gestion email</li>
+				<li>Gestion des emails</li>
 			</ul>
 
-			<h2 class="text-2xl font-semibold  m-4">Eveillé par les américains</h2>
+			<h2 class="text-2xl font-semibold m-4">Inspiré par les Américains</h2>
 
-			<p class=" m-4">
-				C'est en réalisant une candidature pour une entreprise américaine que ma nouvelle stack est apparu. Le 20 juin, Careswitch me proprose de réaliser son teste. Leur stack est celle utilisé pour ce teste, elle permet un déploiement sur Vercel.
-				Leur conseils sont très instructifs.
+			<p class="m-4">
+				C'est en postulant pour une entreprise américaine que ma nouvelle stack est apparue. Le 20 juin, Careswitch m'a proposé de réaliser leur test technique. Leur stack, utilisée pour ce test, permet un déploiement sur Vercel. Leurs conseils se sont révélés très instructifs.
 			</p>
 
 			<a href="https://sveltejobs.com/jobs/careswitch-full-stack-engineer" target="_blank" rel="noopener noreferrer">Annonce</a>
 
 			<ul class="list-disc list-inside">
-				<li>Ne pas surcharger le loader afin d'avoir un chargement optimisé des pages</li>
-				<li>Réaliser une page pour chaque formulaire</li>
-				<li>Ne pas utilisé la balise style et réaliser le tout avec tailwind et shadcn</li>
+				<li>Ne pas surcharger le loader afin d'optimiser le chargement des pages</li>
+				<li>Créer une page pour chaque formulaire</li>
+				<li>Ne pas utiliser la balise style, tout réaliser avec Tailwind et Shadcn</li>
+				<li>Et bien d'autres conseils pour une application optimisée</li>
 			</ul>
 
-			<p class=" m-4">	
-				Tenter de faire un dashboard avec sveltekit avec une ribembelle de crud sur une même page. Essayer de 
+			<h2 class="text-2xl font-semibold m-4">Let's go pour un E-commerce & boilerplate pour SAAS</h2>
+
+			<p class="m-4">	
+				Suivant ces recommandations, je me suis lancé dans la création d'un E-commerce. Cela m'a permis d'avoir une solution disponible pour des clients rapidement.
 			</p>	
+
+			<p class="m-4">	
+				En définitive, j'ai été un bourreau de travail sur SvelteKit cette année, et je souhaite tout faire pour l'utiliser dans un environnement professionnel.
+			</p>	
+
+			<h2 class="text-2xl font-semibold m-4">Si je travaille avec vous, mon objectif sera accompli. Vu votre projet et vos besoins, je vais énormément apprendre, et cela me fascine.</h2>
 		</section>
 	</article>
 </div>
