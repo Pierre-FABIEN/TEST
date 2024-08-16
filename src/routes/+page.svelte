@@ -1,5 +1,125 @@
 <div class="flex justify-center mt-10">
-	<main class="w-full max-w-4xl rounded-lg border p-8">
+	<article class="w-full max-w-4xl rounded-lg border p-8 m-2">
+		<h1 class="text-4xl font-bold mb-4">Présentation du test</h1>
+  
+		<section class="mb-8">
+		  <h2 class="text-2xl font-semibold  mb-4">1. CRUD pour les Directeurs, Agences et Produits</h2>
+		  <p class=" mb-4">
+			Ce projet vise à gérer une base de données MongoDB contenant des informations sur des directeurs, des agences, et des produits, en utilisant Prisma comme ORM pour simplifier les opérations CRUD (Create, Read, Update, Delete). Le projet inclut les modèles <strong>Director</strong>, <strong>Agence</strong>, et <strong>Product</strong>, ainsi que leurs relations.
+		  </p>
+		  
+		  <div class="ml-4 mb-4">
+			<h3 class="text-xl font-semibold  mb-2">Directeur</h3>
+			<p class="">
+			  Le modèle <strong>Director</strong> représente les directeurs d'agences. Chaque directeur a un identifiant unique, un nom, un email, un âge, une date de création, et un statut d'activité. Le directeur peut être associé à plusieurs agences.
+			</p>
+		  </div>
+		  
+		  <div class="ml-4 mb-4">
+			<h3 class="text-xl font-semibold  mb-2">Agence</h3>
+			<p class="">
+			  Le modèle <strong>Agence</strong> représente les agences associées à un directeur. Chaque agence possède une adresse complète (rue, ville, état, code postal, pays), une date de création, et une relation avec un directeur. Les agences peuvent également être associées à plusieurs produits.
+			</p>
+		  </div>
+		  
+		  <div class="ml-4 mb-4">
+			<h3 class="text-xl font-semibold  mb-2">Produit</h3>
+			<p class="">
+			  Le modèle <strong>Product</strong> représente les produits disponibles dans une agence. Chaque produit a un nom, un stock, un prix, une date de création, et une relation avec une agence.
+			</p>
+		  </div>
+		</section>
+	  
+		<section class="mb-8">
+		  <h2 class="text-2xl font-semibold  mb-4">2. Relations entre les modèles</h2>
+		  <p class=" mb-4">
+			- Un <strong>Directeur</strong> peut avoir plusieurs <strong>Agences</strong> (relation un-à-plusieurs).<br>
+			- Une <strong>Agence</strong> peut avoir plusieurs <strong>Produits</strong> (relation un-à-plusieurs).<br>
+			- Une <strong>Agence</strong> est liée à un seul <strong>Directeur</strong> (relation plusieurs-à-un).<br>
+			- Un <strong>Produit</strong> est lié à une seule <strong>Agence</strong> (relation plusieurs-à-un).
+		  </p>
+		</section>
+	  
+		<section class="mb-8">
+		  <h2 class="text-2xl font-semibold  mb-4">3. Visualisation des Stocks et Agences avec ApexCharts</h2>
+		  <p class="">
+			Une des fonctionnalités clés du projet inclura l'utilisation d'<strong>ApexCharts</strong> pour visualiser les données liées aux stocks de produits dans les différentes agences. Cela permettra de générer des graphiques dynamiques montrant, par exemple :
+		  </p>
+		  <ul class="list-disc list-inside  ml-4">
+			<li>La répartition des stocks de produits par agence.</li>
+			<li>L'évolution du stock de produits dans le temps.</li>
+		  </ul>
+		  <p class=" mt-4">
+			Ces visualisations aideront à comprendre rapidement la distribution des produits et à prendre des décisions informées.
+		  </p>
+		</section>
+	  
+		<section class="mb-8">
+		  <h2 class="text-2xl font-semibold  mb-4">4. API pour requêtes d'adresses avec OpenCage Data</h2>
+		  <p class="">
+			Le projet inclura également une API qui permet de récupérer des informations géographiques basées sur les adresses des agences. Cette API utilisera le service <strong>OpenCage Data</strong> pour obtenir des informations comme les coordonnées géographiques, ou d'autres détails géolocalisés. Cette fonctionnalité peut être utilisée pour améliorer la précision des données d'adresse, ou pour des analyses géographiques avancées des agences.
+		  </p>
+		</section>
+	  
+		<footer>
+		  <p class="">
+			Le projet met en place une gestion efficace des directeurs, agences, et produits avec des relations bien définies et des outils de visualisation et d'intégration de données externes puissants. L'usage de Prisma pour MongoDB simplifie le travail avec la base de données, tandis que l'intégration de l'API OpenCage Data et ApexCharts enrichit l'expérience utilisateur en offrant des fonctionnalités supplémentaires pour l'analyse et la visualisation des données.
+		  </p>
+		</footer>
+
+		<div class="flex flex-col items-center p-8">
+			<div class="bg-white border border-gray-300 p-4 rounded-lg shadow-md mb-8">
+			  <h2 class="text-lg font-semibold text-gray-700 mb-4 text-center">Director</h2>
+			  <ul class="list-disc list-inside text-black">
+				<li>id (String)</li>
+				<li>name (String)</li>
+				<li>email (String)</li>
+				<li>age (Int)</li>
+				<li>createdAt (DateTime)</li>
+				<li>isActive (Boolean)</li>
+			  </ul>
+			</div>
+		  
+			<!-- Relation Line -->
+			<div class="w-1 h-16 bg-gray-500 mb-8"></div>
+		  
+			<div class="flex space-x-8">
+			  <div class="bg-white border border-gray-300 p-4 rounded-lg shadow-md">
+				<h2 class="text-lg font-semibold text-gray-700 mb-4 text-center">Agence</h2>
+				<ul class="list-disc list-inside text-black">
+				  <li>id (String)</li>
+				  <li>street (String)</li>
+				  <li>city (String)</li>
+				  <li>state (String)</li>
+				  <li>zip (String)</li>
+				  <li>country (String)</li>
+				  <li>createdAt (DateTime)</li>
+				  <li>directorId (String)</li>
+				</ul>
+			  </div>
+		  
+			  <!-- Relation Line -->
+			  <div class="flex flex-col items-center">
+				<div class="w-16 h-1 bg-gray-500"></div>
+				<div class="w-1 h-16 bg-gray-500 mt-8"></div>
+			  </div>
+		  
+			  <div class="bg-white border border-gray-300 p-4 rounded-lg shadow-md">
+				<h2 class="text-lg font-semibold text-gray-700 mb-4 text-center">Product</h2>
+				<ul class="list-disc list-inside text-black">
+				  <li>id (String)</li>
+				  <li>name (String)</li>
+				  <li>stock (Int)</li>
+				  <li>price (Float)</li>
+				  <li>createdAt (DateTime)</li>
+				  <li>agenceId (String)</li>
+				</ul>
+			  </div>
+			</div>
+		  </div>
+	</article>
+
+	<article class="w-full max-w-4xl rounded-lg border p-8 m-2">
 		<h1 class="text-4xl font-bold mb-4">Silver-Smok-Test</h1>
 		<p class="mb-6">
 			<span class="inline-block mr-2 px-2 py-1 rounded bg-blue-500 text-white font-bold text-sm"
@@ -135,7 +255,7 @@
 					target="_blank"
 					rel="noopener noreferrer">TypeScript</a
 				> : Un sur-ensemble de JavaScript qui ajoute le typage statique, améliorant la qualité et la
-				maintenabilité du code.
+				divtenabilité du code.
 			</li>
 		</ul>
 
@@ -201,5 +321,60 @@
 				>npm install
 npm run dev</code
 			></pre>
-	</main>
+	</article>
+</div>
+
+<div class="flex justify-center mt-10">
+	<article class="w-full max-w-4xl rounded-lg border p-8 m-2">
+		<h1 class="text-4xl font-bold mb-4">Motivations</h1>
+		<section class="mb-8">
+			<h2 class="text-2xl font-semibold  mb-4">Un an focus sur sveltekit</h2>
+			<p class=" m-4">
+			  Vous pouvez remarquer sur mon CV mon engouement pour sveltekit et les technologies autour de cet éco-systèmes.
+			  Cela fait plus de 1 an que je m'interresse svelte en commencant par créer un ensemble d'outils pour le front-end.
+			</p>
+
+			<ul class="list-disc list-inside">
+				<li>SmoothScroll</li>
+				<li>Transition de page (pour le developpement créatif afin d'avoir une navigation fluide)</li>
+				<li>Darkmode natif</li>
+				<li>Gestion du Préloader avec le store</li>
+				<li>Gestion des etats de ThreeJs avec le store</li>
+				<li>PWA</li>
+				<li>Et plus sur des choses futiles qui on pu ajouter de l'experience</li>
+			</ul>
+			  
+			<p class=" m-4">
+				C'est à partir de décembre 2023 que j'ai commencé mon apprentissage intensif sur sveltekit. J'ai commencé par créer un boilerplate avec un backend dissocié sur NodeJs. Réunissant tout les outils que j'ai pu auparavant déployer sur svelte. J'ai décidé de prendre en charge le fullstack afin de réaliser une experience complête pour tout les types de projet rcihes et complexes. J'ai mis un accent spécifique sur l'authentification et la sécurité en prennant en charge l'authentification de manière native. J'ai réalisé ce projet a partir d'une API RestFul et j'ai migré ensuite sur GraphQL. Problême, ce concept doit être déployer sur un serveur payant.
+			</p>
+
+			<ul class="list-disc list-inside">
+				<li>Authentification:</li>
+				<li>Roles et permissions</li>
+				<li>Gestion token approfondie (black listed token)</li>
+				<li>Sessions pour déconnecter a distances ses comptes</li>
+				<li>Rate Limiter</li>
+				<li>Gestion email</li>
+			</ul>
+
+			<h2 class="text-2xl font-semibold  m-4">Eveillé par les américains</h2>
+
+			<p class=" m-4">
+				C'est en réalisant une candidature pour une entreprise américaine que ma nouvelle stack est apparu. Le 20 juin, Careswitch me proprose de réaliser son teste. Leur stack est celle utilisé pour ce teste, elle permet un déploiement sur Vercel.
+				Leur conseils sont très instructifs.
+			</p>
+
+			<a href="https://sveltejobs.com/jobs/careswitch-full-stack-engineer" target="_blank" rel="noopener noreferrer">Annonce</a>
+
+			<ul class="list-disc list-inside">
+				<li>Ne pas surcharger le loader afin d'avoir un chargement optimisé des pages</li>
+				<li>Réaliser une page pour chaque formulaire</li>
+				<li>Ne pas utilisé la balise style et réaliser le tout avec tailwind et shadcn</li>
+			</ul>
+
+			<p class=" m-4">	
+				Tenter de faire un dashboard avec sveltekit avec une ribembelle de crud sur une même page. Essayer de 
+			</p>	
+		</section>
+	</article>
 </div>
