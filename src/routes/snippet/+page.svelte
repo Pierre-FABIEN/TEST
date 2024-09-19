@@ -1,4 +1,5 @@
 <script lang="ts">
+	import CardSnippet from './../../lib/components/CardSnippet.svelte';
     
     interface Agency {
         id: string;
@@ -49,9 +50,25 @@
     </div>
 {/snippet}
 
+{#snippet testSnippet()}
+    {#each directors as director}
+        <h1>{director.name}</h1>
+    {/each}
+{/snippet}
+
+
+
+
 <main>
     <h1>Liste des directeurs</h1>
-    {#each directors as director}
+    <!-- {#each directors as director}
         {@render directorDisplay(director)}
-    {/each}
+    {/each} -->
+    
+
+    <CardSnippet {testSnippet}>
+        {#snippet testNestedSnippet()}
+            <h1>testNestedSnippet</h1>
+        {/snippet}
+    </CardSnippet>
 </main>
