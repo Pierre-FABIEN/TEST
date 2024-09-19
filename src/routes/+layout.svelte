@@ -62,6 +62,12 @@
 			>
 					statistical
 			</a>
+			<a
+			href="/snippet"
+			class={`text-sm font-medium ${$page.url.pathname === '/snippet' ? 'text-primary' : 'text-muted-foreground'} transition-colors hover:text-primary`}
+			>
+					Snippet
+			</a>
 		</nav>
 	</div>
 

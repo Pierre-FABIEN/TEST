@@ -5,9 +5,23 @@ import { zod } from 'sveltekit-superforms/adapters';
 
 export const load = async () => {
 	const directors = await prisma.director.findMany({
-		include: {
-			agencies: true
-		}
+		select: {
+			id: true,
+			name: true,
+			email: true,
+			age: true,
+			isActive: true,
+			agencies: {
+			  select: {
+				id: true,
+				street: true,
+				city: true,
+				state: true,
+				zip: true,
+				country: true
+			  }
+			}
+		  }
 	});
 
 	const deleteDirector = await superValidate(zod(deleteDirectorSchema));
