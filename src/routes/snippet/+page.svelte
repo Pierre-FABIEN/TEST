@@ -61,10 +61,11 @@
 
 <main>
     <h1>Liste des directeurs</h1>
-    <!-- {#each directors as director}
+    {#each directors as director}
         {@render directorDisplay(director)}
-    {/each} -->
+    {/each}
     
+    <hr>
 
     <CardSnippet {testSnippet}>
         {#snippet testNestedSnippet()}
