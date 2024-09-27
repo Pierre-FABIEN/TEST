@@ -120,7 +120,7 @@
 	</article>
 
 	<article class="w-full max-w-4xl rounded-lg border p-8 m-2">
-		<h1 class="text-4xl font-bold mb-4">Silver-Smok-Test</h1>
+		<h1 class="text-4xl font-bold mb-4">Test</h1>
 		<p class="mb-6">
 			<span class="inline-block mr-2 px-2 py-1 rounded bg-blue-500 text-white font-bold text-sm"
 				>version 0.0.1</span
@@ -135,7 +135,7 @@
 
 		<h2 class="text-2xl font-semibold mb-3">Description</h2>
 		<p class="text-lg leading-relaxed mb-6">
-			<strong>Silver-Smok-Test</strong> est un projet web moderne qui combine les meilleures
+			<strong>Test</strong> est un projet web moderne qui combine les meilleures
 			technologies pour développer une application web performante et évolutive. Il repose sur
 			<strong>SvelteKit</strong>
 			pour le front-end, <strong>Prisma</strong> et <strong>MongoDB</strong> pour la gestion des
