@@ -1,10 +1,10 @@
-# **Silver-Smok-Test**
+# **TEST-Svelte-5**
 
 ![Project Badge](https://img.shields.io/badge/version-0.0.1-blue) ![License](https://img.shields.io/badge/license-MIT-green) ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)
 
 ## **Description**
 
-**Silver-Smok-Test** est un projet web moderne qui combine les meilleures technologies pour développer une application web performante et évolutive. Il repose sur **SvelteKit** pour le front-end, **Prisma** et **MongoDB** pour la gestion des données, ainsi que **Playwright** pour les tests E2E. Ce projet met également l'accent sur une configuration complète pour un développement efficace et sécurisé.
+**TEST-Svelte-5** est un projet web moderne qui combine les meilleures technologies pour développer une application web performante et évolutive. Il repose sur **SvelteKit** pour le front-end, **Prisma** et **MongoDB** pour la gestion des données, ainsi que **Playwright** pour les tests E2E. Ce projet met également l'accent sur une configuration complète pour un développement efficace et sécurisé.
 
 ## **Technologies Utilisées**
 
