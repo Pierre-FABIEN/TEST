@@ -68,6 +68,12 @@
 			>
 					Snippet
 			</a>
+			<a
+			href="/state"
+			class={`text-sm font-medium ${$page.url.pathname === '/state' ? 'text-primary' : 'text-muted-foreground'} transition-colors hover:text-primary`}
+			>
+					State
+			</a>
 		</nav>
 	</div>
 
