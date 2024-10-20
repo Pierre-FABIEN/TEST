@@ -31,7 +31,7 @@
 	<ModeWatcher />
 
 	<div class="flex justify-center mt-5">
-		<nav class="flex items-center border rounded space-x-4 lg:space-x-6 rcb w-[500px] p-3">
+		<nav class="flex items-center border rounded space-x-4 lg:space-x-6 rcb w-[550px] p-3">
 			<a
 				href="/"
 				class={`text-sm font-medium ${$page.url.pathname === '/' ? 'text-primary' : 'text-muted-foreground'} transition-colors hover:text-primary`}
